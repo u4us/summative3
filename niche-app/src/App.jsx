@@ -6,6 +6,13 @@ import Nav from './Nav.jsx';
 import './App.scss';
 
 class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      products: [],
+      types: []
+    }
+  }
   render(){
     return (
       <div className="app">
@@ -14,7 +21,7 @@ class App extends React.Component{
             <i className="fas fa-bars"></i>
         </header>
 
-        <Details></Details>
+        <ItemDetails></ItemDetails>
         
         <footer>
             <i className="fas fa-home"></i>
@@ -23,6 +30,7 @@ class App extends React.Component{
             <i className="far fa-heart"></i>
             <i className="fas fa-user-circle"></i>
         </footer>
+
     </div>
     );
   }
