@@ -1,0 +1,281 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css';
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+$primary-color: #F16266;
+
+*{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.app{
+    margin: auto;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+/* header|footer styling */
+
+header{
+    background-color: $primary-color;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1.5rem;
+
+    i{
+        font-size: 1.5rem;
+    }
+}
+
+footer{
+    background-color: $primary-color;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    padding: 0 1rem;
+
+    i{
+        font-size: 1.5rem;
+    }
+
+    .plus{
+        font-size: 2.5rem;
+    }
+}
+
+/* dashboard/home */
+
+.dash-items{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+
+    .dash-item{
+        max-width: 30vw;
+        max-height: 30vw;
+        overflow: hidden;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        img{
+            height: 30vw;
+        }
+
+        .dash-image{
+            object-fit: cover;
+        }
+
+        img[class]{
+            width: 100%;
+        }
+    }
+}
+
+/* item details page */
+
+.image-container{
+    max-height: 40vh;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+    }
+}
+
+.details-content{
+    padding: 1rem 1.5rem;
+    padding-bottom: 4rem;
+
+    .icons{
+        color: $primary-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .like{
+            font-size: 1.7rem;
+        }
+
+        .edit i{
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    .user{
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+
+        .avatar{
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            margin-right: 0.7rem;
+        }
+    }
+
+    .location{
+        font-size: 0.8rem;
+        color: $primary-color;
+        margin-bottom: 1rem;
+    }
+
+    .description{
+        border-bottom: 1px $primary-color solid;
+        padding-bottom: 1.5rem;
+    }
+
+    .comments{
+        padding: 1rem;
+
+        .posted-comment{
+            margin: 1rem 0;
+        }
+
+        .form-group label{
+            color: $primary-color;
+        }
+
+        .comment-input{
+            font-size: 1rem;
+            font-family: 'Montserrat';
+            margin-top: 1rem;
+            margin-left: 1rem;
+        }
+
+        .comment-input:focus{
+            outline: none;
+        }
+    }
+}
+
+.buy-container{
+    border-top: 1px grey solid;
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    height: 3.5rem;
+    left: 0;
+    top: calc(100% - 6.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+
+    .price{
+        font-size: 1.3rem;
+    }
+
+    .buy-now{
+        background-color: $primary-color;
+        padding: 0.3rem;
+        color: white;
+    }
+}
+
+/* add item page */
+
+.add-item{
+    padding: 2rem;
+
+    .form-group{
+        margin-bottom: 2rem;
+
+        input[type=file]{
+            background-color: #f8f8f8;
+            color: $primary-color;
+            font-size: 0.8rem;
+            padding: 0.2rem;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        input[type=text]{
+            width: 100%;
+            border: none;
+            border-bottom: 1px $primary-color solid;
+            font-size: 1rem;
+            padding: 0.5rem;
+            color: $primary-color;
+        }
+
+        input[type=text]:focus{
+            outline: none;
+        }
+
+        .category-input{
+            width: 100%;
+            margin-top: 0.5rem;
+            border: none;
+            border-bottom: 1px $primary-color solid;
+            border-radius: 0;
+            font-size: 1rem;
+            padding: 0.5rem;
+            color: $primary-color;
+        }
+        
+        .category-input:focus{
+            outline: none;
+        }
+    }
+
+    .upload-button{
+        display: flex;
+        justify-content: flex-end;
+    
+        button{
+            background-color: $primary-color;
+            border: none;
+            font-size: 1.3rem;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 0.3rem;
+            margin-top: 2rem;
+        }
+    }
+}
+
+/* nav page */
+
+.nav-container{
+    padding: 3rem;
+
+    .category{
+        border-bottom: 1px grey solid;
+        padding: 1rem;
+    }
+
+    .sell-item{
+        color: $primary-color;
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5rem 1rem;
+        align-items: center;
+    
+        i{
+            font-size: 1.2rem;
+        }
+    }
+}
