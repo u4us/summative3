@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-class Nav extends React.Component{
+class RouteNav extends React.Component{
 
     render(){
         return(
@@ -21,4 +21,4 @@ class Nav extends React.Component{
     }
 }
 
-export default Nav;
+export default RouteNav;

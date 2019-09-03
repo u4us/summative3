@@ -1,8 +1,9 @@
 import React from 'react';
-import Dashboard from './Dashboard.jsx';
-import ItemDetails from './ItemDetails.jsx';
-import Upload from './Upload.jsx';
-import Nav from './Nav.jsx';
+import { Router, Link, navigate } from '@reach/router';
+import RouteDashboard from './RouteDashboard.jsx';
+import RouteProductDetails from './RouteProductDetails.jsx';
+import RouteAddProduct from './RouteAddProduct.jsx';
+import RouteNav from './RouteNav.jsx';
 import './App.scss';
 
 class App extends React.Component{
@@ -21,7 +22,14 @@ class App extends React.Component{
             <i className="fas fa-bars"></i>
         </header>
 
-        <ItemDetails></ItemDetails>
+        <div className="main">
+          <Router>
+            <RouteDashboard path="home"/>
+            <RouteNav path="nav"/>
+            <RouteAddProduct path="addproduct"/>
+            <RouteProductDetails path="details"/>
+          </Router>
+        </div>
         
         <footer>
             <i className="fas fa-home"></i>

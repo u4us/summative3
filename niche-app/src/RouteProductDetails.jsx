@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-class Details extends React.Component{
+class RouteProductDetails extends React.Component{
 
     render(){
         return(
@@ -44,4 +44,4 @@ class Details extends React.Component{
     }
 }
 
-export default Details;
+export default RouteProductDetails;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-class Dashboard extends React.Component{
+class RouteDashboard extends React.Component{
 
     render(){
         return(
@@ -31,4 +31,4 @@ class Dashboard extends React.Component{
     }
 }
 
-export default Dashboard;
+export default RouteDashboard;

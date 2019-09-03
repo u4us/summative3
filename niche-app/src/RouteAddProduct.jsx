@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-class Upload extends React.Component{
+class RouteAddProduct extends React.Component{
 
     render(){
         return(
@@ -38,4 +38,4 @@ class Upload extends React.Component{
     }
 }
 
-export default Upload;
+export default RouteAddProduct;
