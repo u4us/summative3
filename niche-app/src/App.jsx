@@ -1,6 +1,6 @@
 import React from 'react';
 import Dashboard from './Dashboard.jsx';
-import Details from './Details.jsx';
+import ItemDetails from './ItemDetails.jsx';
 import Upload from './Upload.jsx';
 import Nav from './Nav.jsx';
 import './App.scss';
@@ -14,7 +14,7 @@ class App extends React.Component{
             <i className="fas fa-bars"></i>
         </header>
 
-        <Nav></Nav>
+        <Details></Details>
         
         <footer>
             <i className="fas fa-home"></i>
