@@ -7,11 +7,11 @@ var getProducts =() =>{
 }
 
 var getProduct =(id) =>{
-    return axios.get(urlPrefix+'products/'+id)
+    return axios.get(urlPrefix+'/products/'+id)
 }
 
 export {
     getProducts,
     getProduct,
-    
+
 }
