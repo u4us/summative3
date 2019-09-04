@@ -1,5 +1,5 @@
 import React from 'react';
-import {getProducts} from './API';
+import {getProducts,serverURL} from './API';
 import './App.scss';
 
 class RouteDashboard extends React.Component{
@@ -37,7 +37,7 @@ class RouteDashboard extends React.Component{
 
                             return(
                                 <div className="dash-item">
-                                    <img className="dash-image" src={product.image} alt="product-image"/>
+                                    <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
                                 </div>  
                             )
                         })

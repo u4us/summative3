@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 var urlPrefix = 'http://10.2.24.39:3001/api';
-var serverURL = '';
+var serverURL = 'http://10.2.24.39:3001/';
 
 // product
 var getProducts =() =>{
@@ -44,4 +44,5 @@ export {
     addComment,
 
     addUser,
+    serverURL,
 }
