@@ -13,7 +13,7 @@ class RouteDashboard extends React.Component{
 
     routeGetProducts = () => {
         getProducts().then(res => {
-            this.setState({projects:res.data})
+            this.setState({products:res.data})
         })
     }
 
