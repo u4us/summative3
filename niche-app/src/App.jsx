@@ -9,14 +9,7 @@ import './App.scss';
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      products: [
-        {
-          
-        }
-      ],
-      types: []
-    }
+
   }
   render(){
     return (
@@ -28,7 +21,7 @@ class App extends React.Component{
 
         <div className="main">
           <Router>
-            <RouteDashboard path="/"/>
+            <RouteDashboard  path="/"/>
             <RouteNav path="/nav"/>
             <RouteAddProduct path="/addproduct"/>
             <RouteProductDetails path="/details"/>
