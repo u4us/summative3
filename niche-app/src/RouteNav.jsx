@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { Link } from "@reach/router";
+import { Router, Link, navigate } from '@reach/router';
 import {getCategories} from './API';
 
 
