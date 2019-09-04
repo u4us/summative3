@@ -1,9 +1,26 @@
 import React from 'react';
-import './App.scss';
+import Comment from './Comment';
+import {getProduct} from './API'
 
 class RouteProductDetails extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            product: null
+        }
+    }
+
+    routeGetProduct =(id) =>{
+        getProduct(id).then(res => this.setState({product:res.data}))
+    }
+
+    componentDidMount(){
+        var {id} = this.props;
+        this.routeGetProduct(id);
+    }
 
     render(){
+        var {product} = this.state;
         return(
             <div className="main details">
                 <div className="image-container">
@@ -24,9 +41,7 @@ class RouteProductDetails extends React.Component{
                     <div className="location">mount eden, auckland</div>   
                     <div className="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi aliquid recusandae placeat quis, ex.</div> 
                     <div className="comments">
-                        <div className="posted-comment">test comment</div>
-                        <div className="posted-comment">test comment</div>
-                        <div className="posted-comment">test comment</div>
+                        <Comment />
                         <div className="form-group">
                             <label htmlFor="comment-input"><i className="far fa-comment"></i></label>
                             <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
