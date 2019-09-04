@@ -1,7 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {navigate} from '@reach/router'
 import './App.scss';
+import {addProduct} from './API';
+
 
 class RouteAddProduct extends React.Component{
+
+    constructor(props){
+    super(props)
+    this.state ={
+        product: {}
+        } 
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+    
+        var formData = new FormData(this.form);
+
+        var data = {
+            name:formData.get('name-input'),
+            description:formData.get('description-input'),
+            category_id:formData.get('category-input')
+          }
+
+    addProduct(data).then(res => navigate('/products'))
+    
+    }
+
+
+
+
 
     render(){
         return(

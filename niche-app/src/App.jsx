@@ -13,6 +13,7 @@ class App extends React.Component{
   }
   render(){
     return (
+      
       <div className="app">
         <header>
             <h2>LOGO</h2>
@@ -23,10 +24,10 @@ class App extends React.Component{
           <Router>
             <RouteDashboard  path="/"/>
             <RouteNav path="/nav"/>
-            <RouteAddProduct path="/addproduct"/>
+            <RouteAddProduct path="/add"/>
             <RouteProductDetails path="/details"/>
           </Router>
-        </div>
+        </div> 
         
         <footer>
             <i className="fas fa-home"></i>
