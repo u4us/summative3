@@ -8,22 +8,22 @@ class RouteDashboard extends React.Component{
             <div className="main dashboard">
                 <div className="dash-items">
                     <div className="dash-item">
-                        <img className="dash-image" src="snail.jpg" alt="snail"/>
+                        <img className="dash-image" src="rose.jpg" alt="snail"/>
                     </div>
                     <div className="dash-item">
-                        <img className="dash-image" src="snail.jpg" alt="snail"/>
+                        <img className="dash-image" src="rose.jpg" alt="snail"/>
                     </div>
                     <div className="dash-item">
-                        <img className="dash-image" src="snail.jpg" alt="snail"/>
+                        <img className="dash-image" src="rose.jpg" alt="snail"/>
                     </div>
                     <div className="dash-item">
-                        <img className="dash-image" src="snail.jpg" alt="snail"/>
+                        <img className="dash-image" src="rose.jpg" alt="snail"/>
                     </div>
                     <div className="dash-item">
-                        <img className="dash-image" src="snail.jpg" alt="snail"/>
+                        <img className="dash-image" src="rose.jpg" alt="snail"/>
                     </div>
                     <div className="dash-item">
-                        <img className="dash-image" src="snail.jpg" alt="snail"/>
+                        <img className="dash-image" src="rose.jpg" alt="snail"/>
                     </div>    
                 </div>        
             </div>
