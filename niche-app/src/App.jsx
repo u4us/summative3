@@ -18,16 +18,16 @@ class App extends React.Component{
     return (
       <div className="app">
         <header>
-            <h2>NACHO</h2>
+            <h2>LOGO</h2>
             <i className="fas fa-bars"></i>
         </header>
 
         <div className="main">
           <Router>
-            <RouteDashboard path="home"/>
-            <RouteNav path="nav"/>
-            <RouteAddProduct path="addproduct"/>
-            <RouteProductDetails path="details"/>
+            <RouteDashboard path="/"/>
+            <RouteNav path="/nav"/>
+            <RouteAddProduct path="/addproduct"/>
+            <RouteProductDetails path="/details"/>
           </Router>
         </div>
         
