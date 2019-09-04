@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var urlPrefix = 'http://localhost:3001';
+var urlPrefix = 'http://10.2.24.39:3001/api';
 var serverURL = '';
 
 // product
@@ -21,6 +21,9 @@ var updateProduct =(id, data) =>{
 }
 
 // category
+var getCategories =() =>{
+    return axios.get(urlPrefix+'/categories')
+}
 // comment
 var addComment =(data) =>{
     return axios.post(urlPrefix+'/comments', data)
@@ -36,6 +39,7 @@ export {
     getProduct,
     addProduct,
     updateProduct,
+    getCategories,
 
     addComment,
 
