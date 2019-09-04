@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-var urlPrefix = 'http://localhost:3001';
+var urlPrefix = 'http://localhost:3001/api'
+// var urlPrefix = 'http://10.2.24.39:3001/api';
 var serverURL = '';
 
 // product
