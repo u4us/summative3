@@ -49,7 +49,7 @@ class RouteProductDetails extends React.Component{
                         </div>
                     </div>
                     <div className="user">
-                        <img className="avatar" src="avatar.jpg" alt="avatar"/>
+                        <img className="avatar" src="/avatar.jpg" alt="avatar"/>
                         <div className="username">{product.user ? product.user.username : null}</div>
                     </div>
                     <div className="location">mount eden, auckland</div>   
