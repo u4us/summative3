@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {navigate} from '@reach/router'
 import './App.scss';
 import {addProduct, uploadFile} from './API';
@@ -60,7 +60,7 @@ class RouteAddProduct extends React.Component{
                         </select>
                     </div>
         
-                    <div className="upload-button">
+                    <div className="button">
                         <button type="submit">UPLOAD</button>    
                     </div>             
                 </form>
