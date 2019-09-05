@@ -12,9 +12,10 @@ class App extends React.Component{
     this.state = {
       products: [],
       types: [],
-      currentUser: null,
+      // currentUser: null,
     }
   }
+
   render(){
     return (
       
