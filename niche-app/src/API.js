@@ -34,6 +34,17 @@ var addUser =(data) =>{
     return axios.post(urlPrefix+'/users', data)
 }
 
+// var getSingleUser = (id) => {
+//     return axios.get(urlPrefix+'/users/'+id)
+// }
+
+
+// file upload
+ var uploadFile = (formData) => {
+    var settings = { headers: {'Content-Type' : 'multipart/form-data'}}
+    return axios.post(urlPrefix+'/upload', formData, settings)
+}
+
 export {
     getProducts,
     getProduct,
@@ -45,4 +56,6 @@ export {
 
     addUser,
     serverURL,
+
+    uploadFile
 }
