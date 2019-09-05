@@ -1,6 +1,8 @@
 import React from 'react';
 import Comment from './Comment';
-import {getProduct} from './API'
+import {getProduct, serverURL} from './API'
+import {Link} from '@reach/router';
+
 
 class RouteProductDetails extends React.Component{
     constructor(props){
@@ -36,13 +38,13 @@ class RouteProductDetails extends React.Component{
         return(
             <div className="main details">
                 <div className="image-container">
-                    <img className="item-image" src="test-photo.jpg" alt=""/>
+                    <img className="item-image" src={serverURL+product.photo} alt=""/>
                 </div>
                 <div className="details-content">
                     <div className="icons">
                         <i className="far fa-heart like"></i>
                         <div className="edit">
-                            <i className="fas fa-edit"></i>
+                            <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
                             <i className="fas fa-trash-alt"></i>
                         </div>
                     </div>
