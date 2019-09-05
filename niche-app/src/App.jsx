@@ -29,7 +29,7 @@ class App extends React.Component{
             <RouteDashboard  path="/"/>
             <RouteNav path="/nav"/>
             <RouteAddProduct path="/products/create"/>
-            <RouteProductDetails path="/details"/>
+            <RouteProductDetails path="/products/:id"/>
           </Router>
         </div> 
         
