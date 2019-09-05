@@ -197,9 +197,18 @@ footer{
 
 /* add item page */
 
-.add-item{
+.add-product{
     padding: 2rem;
+}
 
+/* update page */
+
+.update{
+    padding: 2rem;
+}
+
+/* add/update form */
+.form{
     .form-group{
         margin-bottom: 2rem;
 
@@ -241,7 +250,7 @@ footer{
         }
     }
 
-    .upload-button{
+    .button{
         display: flex;
         justify-content: flex-end;
     

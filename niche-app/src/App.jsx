@@ -3,6 +3,7 @@ import { Router, Link, navigate } from '@reach/router';
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
+import RouteUpdateProduct from './RouteUpdateProduct.jsx';
 import RouteNav from './RouteNav.jsx';
 import './App.scss';
 
@@ -26,6 +27,7 @@ class App extends React.Component{
             <RouteNav path="/nav"/>
             <RouteAddProduct path="/products/create"/>
             <RouteProductDetails path="/details"/>
+            <RouteUpdateProduct path="/update"/>
           </Router>
         </div> 
         

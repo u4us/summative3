@@ -1,52 +1,51 @@
 import React from 'react';
-import {navigate} from '@reach/router'
+import {Link, navigate} from '@reach/router';
+import {getProduct, updateProduct} from './API';
 import './App.scss';
-import {addProduct} from './API';
 
-
-
-class RouteAddProduct extends React.Component{
-
+class RouteUpdateProduct extends React.Component {
     constructor(props){
-    super(props)
-    this.state ={
-        product: {}
-        } 
+        super(props);
+        this.state = {
+            product: {}
+        }
+    }
+
+    componentDidMount(){
+        var {id} = this.props;
+        getProduct(id).then(res => {
+            this.setState({product:res.data})
+        })
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-    
+
         var formData = new FormData(this.form);
 
-        var {currentUser} = this.props;
-
         var data = {
-            name:formData.get('name-input'),
-            description:formData.get('description-input'),
+            name: formData.get('name-input'),
+            description: formData.get('description-input'),
             category_id:formData.get('category-input'),
-            user_id: currentUser.id
-          }
+        }
 
-    addProduct(data).then(res => navigate('/products'))
-    
+        var {id} = this.props;
+        updateProduct(id,data).then(res => navigate('/'))
     }
 
     render(){
+
+        var {name,description} = this.state.product
         return(
-            <div className="main add-product">
-                <form className="form">
-                    <div className="form-group">
-                        <label htmlFor="photo-input">upload photo</label>
-                        <input type="file" name="photo-input" id="photo-input"/>
-                    </div>
+            <div className="main update">
+                <form className="form" onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div className="form-group">
                         <label htmlFor="name-input">what are you selling?</label>
-                        <input type="text" name="name-input" id="name-input"/>
+                        <input type="text" name="name-input" id="name-input" defaultValue={name}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="description-input">description</label>
-                        <input type="text" name="description-input" id="description-input"/>
+                        <input type="text" name="description-input" id="description-input" defaultValue={description}/>
                     </div>
                     <div classNameName="form-group">
                         <label htmlFor="category-input">category</label>
@@ -59,7 +58,7 @@ class RouteAddProduct extends React.Component{
                     </div>
         
                     <div className="button">
-                        <button type="submit">UPLOAD</button>    
+                        <button type="submit">UPDATE</button>    
                     </div>             
                 </form>
             </div>
@@ -67,4 +66,4 @@ class RouteAddProduct extends React.Component{
     }
 }
 
-export default RouteAddProduct;
+export default RouteUpdateProduct;
