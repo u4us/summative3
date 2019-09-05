@@ -7,8 +7,6 @@ class RouteProductDetails extends React.Component{
         super(props);
         this.state = {
             product: {
-                // name: 't',
-                // description: 'shirt',
                 comments: []
             }
         }
@@ -16,6 +14,16 @@ class RouteProductDetails extends React.Component{
 
     routeGetProduct =(id) =>{
         getProduct(id).then(res => this.setState({product:res.data}))
+    }
+
+    handleCommentSubmit =(e) =>{
+        e.preventDefault();
+
+        // var formData = new FormData(this.commentForm);
+        // var productId = this.props.id;
+        // var data = {
+            
+        // }
     }
 
     componentDidMount(){
@@ -45,20 +53,24 @@ class RouteProductDetails extends React.Component{
                     <div className="location">mount eden, auckland</div>   
                     <div className="description">{product.description}</div> 
                     <div className="comments">
-                    {
-                        product.comments.map(comment => {
-                            var commentProps = {
-                            comment: comment,
-                            // currentUser:currentUser,
-                            refreshData: () => this.routeGetProduct(product.id)
-                            }
-                            return <Comment {...commentProps} />
-                        })
-                    }
-                        <div className="form-group">
-                            <label htmlFor="comment-input"><i className="far fa-comment"></i></label>
-                            <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
-                        </div>
+                        {
+                            product.comments.map(comment => {
+                                var commentProps = {
+                                comment: comment,
+                                // currentUser:currentUser,
+                                key: comment.id,
+                                refreshData: () => this.routeGetProduct(product.id)
+                                }
+                                return <Comment {...commentProps} />
+                            })
+                        }
+                        <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}}>
+                            <div className="form-group">
+                                <label htmlFor="comment-input"><i className="far fa-comment"></i></label>
+                                <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
+                            </div>
+                            <button type="submit">Add Comment</button>
+                        </form>
                         
                     </div>
                 </div>     
