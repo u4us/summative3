@@ -11,7 +11,8 @@ class App extends React.Component{
     super(props);
     this.state = {
       products: [],
-      types: []
+      types: [],
+      currentUser: null,
     }
   }
   render(){
