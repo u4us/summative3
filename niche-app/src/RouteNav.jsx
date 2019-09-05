@@ -16,6 +16,7 @@ class RouteNav extends React.Component{
         }
     }
     componentDidMount(){
+        console.log('Nav route mounted')
         getCategories().then(res => {
             this.setState({categories:res.data})
         })
@@ -34,8 +35,9 @@ class RouteNav extends React.Component{
                         })
                     }
                     <div className="sell-item">
+                      
                         <div className="sell">sell an item</div>
-                        <i className="fas fa-plus"></i>
+                        <Link to="/products/create"><i className="fas fa-plus"></i></Link>
                     </div>          
                 </div>
             </div>

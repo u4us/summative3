@@ -19,19 +19,18 @@ class RouteAddProduct extends React.Component{
     
         var formData = new FormData(this.form);
 
+        var {currentUser} = this.props;
+
         var data = {
             name:formData.get('name-input'),
             description:formData.get('description-input'),
-            category_id:formData.get('category-input')
+            category_id:formData.get('category-input'),
+            user_id: currentUser.id
           }
 
     addProduct(data).then(res => navigate('/products'))
     
     }
-
-
-
-
 
     render(){
         return(
