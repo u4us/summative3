@@ -1,5 +1,6 @@
 import React from 'react';
 import {getProducts,serverURL} from './API';
+import {Link} from '@reach/router';
 import './App.scss';
 
 class RouteDashboard extends React.Component{
@@ -22,23 +23,24 @@ class RouteDashboard extends React.Component{
     }
 
     render(){
-
         return(
             <div className="main dashboard">
                 <div className="dash-items">
                     
                     {
                         this.state.products.map((product) => {
-
+                            
                             var productProps = {
                                 ...product,
                                 key: product.id
                             };
 
                             return(
-                                <div className="dash-item">
-                                    <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
-                                </div>  
+                                <Link to={'/products/'+product.id}>
+                                    <div className="dash-item">
+                                        <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
+                                    </div>  
+                                </Link>
                             )
                         })
                     }
