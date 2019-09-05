@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Link, navigate } from '@reach/router';
+import { Router, Link, Redirect,navigate } from '@reach/router';
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
@@ -22,8 +22,9 @@ class App extends React.Component{
       
       <div className="app">
         <header>
+            <div className="box"/>
             <h2>LOGO</h2>
-            <i className="fas fa-bars"></i>
+            <Link to="/nav"><i className="fas fa-bars"></i></Link>
         </header>
 
         <div className="main">
@@ -32,14 +33,14 @@ class App extends React.Component{
             <RouteNav path="/nav"/>
             <RouteAddProduct path="/products/create"/>
             <RouteProductDetails path="/products/:id"/>
-            <RouteUpdateProduct path="/update"/>
+            <RouteUpdateProduct path="/products/:id/update"/>
           </Router>
         </div> 
         
         <footer>
-            <i className="fas fa-home"></i>
+        <Link to="/"><i className="fas fa-home"></i></Link>
             <i className="fas fa-search"></i>
-            <i className="far fa-plus-square plus"></i>
+        <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
             <i className="far fa-heart"></i>
             <i className="fas fa-user-circle"></i>
         </footer>

@@ -30,8 +30,8 @@ class RouteNav extends React.Component{
                     
                     
                     {
-                        categories.map(cat=>{
-                            return <div className="category">{cat.name}</div>
+                        categories.map(category=>{
+                            return <div className="category">{category.name}</div>
                         })
                     }
                     <div className="sell-item">
