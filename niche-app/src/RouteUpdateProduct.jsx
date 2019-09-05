@@ -30,7 +30,7 @@ class RouteUpdateProduct extends React.Component {
         }
 
         var {id} = this.props;
-        updateProduct(id,data).then(res => navigate('/'))
+        updateProduct(id,data).then(res => navigate('/products/'+id))
     }
 
     render(){

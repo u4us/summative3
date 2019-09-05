@@ -36,8 +36,8 @@ class RouteAddProduct extends React.Component{
 
     render(){
         return(
-            <div className="main add-item">
-                <form onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>
+            <div className="main add-product">
+                <form className ="form" onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>
                 <div className="form-group">
                         <label htmlFor="photo-input">Upload a photo</label>
                         <input type="file" name="photo-input" id="photo-input"/>

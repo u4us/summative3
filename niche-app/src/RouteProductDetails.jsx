@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
-import {getProduct, serverURL} from './API'
-import {Link} from '@reach/router';
+import {Link, navigate} from '@reach/router';
+import {getProduct, serverURL, deleteProduct} from './API';
 
 
 class RouteProductDetails extends React.Component{
@@ -12,6 +12,12 @@ class RouteProductDetails extends React.Component{
                 comments: []
             }
         }
+    }
+
+    handleTrashClick = (e) => {
+        var {id} = this.props;
+
+        deleteProduct(id).then(res => navigate('/'))
     }
 
     routeGetProduct =(id) =>{
@@ -37,22 +43,27 @@ class RouteProductDetails extends React.Component{
         var {product} = this.state;
         return(
             <div className="main details">
+                <div className="user">
+                    <img className="avatar" src="/avatar.jpg" alt="avatar"/>
+                    <div className="user-info">
+                        <div className="username">{product.user ? product.user.username : null}</div>
+                        <div className="location">mount eden, auckland</div>    
+                    </div>                
+                </div>
+
                 <div className="image-container">
                     <img className="item-image" src={serverURL+product.photo} alt=""/>
                 </div>
+
                 <div className="details-content">
                     <div className="icons">
                         <i className="far fa-heart like"></i>
                         <div className="edit">
                             <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
-                            <i className="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
                         </div>
                     </div>
-                    <div className="user">
-                        <img className="avatar" src="/avatar.jpg" alt="avatar"/>
-                        <div className="username">{product.user ? product.user.username : null}</div>
-                    </div>
-                    <div className="location">mount eden, auckland</div>   
+                    <div className="name">{product.name}</div>   
                     <div className="description">{product.description}</div> 
                     <div className="comments">
                         {
@@ -66,12 +77,9 @@ class RouteProductDetails extends React.Component{
                                 return <Comment {...commentProps} />
                             })
                         }
-                        <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}}>
-                            <div className="form-group">
-                                <label htmlFor="comment-input"><i className="far fa-comment"></i></label>
-                                <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
-                            </div>
-                            <button type="submit">Add Comment</button>
+                        <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}} className="comment-form">
+                            <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
+                            <button type="submit"><i className="far fa-comment"></i></button>
                         </form>
                         
                     </div>
