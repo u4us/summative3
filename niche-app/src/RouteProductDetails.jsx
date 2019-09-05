@@ -6,7 +6,11 @@ class RouteProductDetails extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            product: null
+            product: {
+                // name: 't',
+                // description: 'shirt',
+                comments: []
+            }
         }
     }
 
@@ -36,12 +40,21 @@ class RouteProductDetails extends React.Component{
                     </div>
                     <div className="user">
                         <img className="avatar" src="avatar.jpg" alt="avatar"/>
-                        <div className="username">username</div>
+                        <div className="username">{product.user ? product.user.username : null}</div>
                     </div>
                     <div className="location">mount eden, auckland</div>   
-                    <div className="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi aliquid recusandae placeat quis, ex.</div> 
+                    <div className="description">{product.description}</div> 
                     <div className="comments">
-                        <Comment />
+                    {
+                        product.comments.map(comment => {
+                            var commentProps = {
+                            comment: comment,
+                            // currentUser:currentUser,
+                            refreshData: () => this.routeGetProduct(product.id)
+                            }
+                            return <Comment {...commentProps} />
+                        })
+                    }
                         <div className="form-group">
                             <label htmlFor="comment-input"><i className="far fa-comment"></i></label>
                             <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
@@ -51,7 +64,7 @@ class RouteProductDetails extends React.Component{
                 </div>     
                 
                 <div className="buy-container">
-                    <div className="price">$600</div>
+                    <div className="price">${product.price}</div>
                     <div className="buy-now">BUY ITEM</div>
                 </div>          
             </div>
