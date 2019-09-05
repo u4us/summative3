@@ -33,11 +33,7 @@ class App extends React.Component{
             <RouteNav path="/nav"/>
             <RouteAddProduct path="/products/create"/>
             <RouteProductDetails path="/products/:id"/>
-<<<<<<< HEAD
-            <RouteUpdateProduct path="/products/:id/update"/>
-=======
             <RouteUpdateProduct path="/products/:id/edit"/>
->>>>>>> d7986dd7d68c53014d7fba749a9933cfbb4d1d43
           </Router>
         </div> 
         
