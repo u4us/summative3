@@ -43,10 +43,11 @@ class RouteProductDetails extends React.Component{
         var {product} = this.state;
         return(
             <div className="main details">
+                <Link className="back-arrow" to="/"><i class="fas fa-arrow-left"></i></Link>
                 <div className="user">
                     <img className="avatar" src="/avatar.jpg" alt="avatar"/>
                     <div className="user-info">
-                        <div className="username">{product.user ? product.user.username : null}</div>
+                        <div className="username">{product.user ? product.user.username : 'username'}</div>
                         <div className="location">mount eden, auckland</div>    
                     </div>                
                 </div>

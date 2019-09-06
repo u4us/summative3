@@ -25,6 +25,7 @@ class RouteAddProduct extends React.Component{
                 var data = {
                     name:formData.get('name-input'),
                     description:formData.get('description-input'),
+                    price:formData.get('price-input'),
                     category_id:formData.get('category-input'),
                     photo:fileName
                   }
@@ -49,6 +50,13 @@ class RouteAddProduct extends React.Component{
                     <div className="form-group">
                         <label htmlFor="description-input">Description</label>
                         <input type="text" name="description-input" id="description-input"/>
+                    </div>
+                    <div className="form-group price">
+                        <label htmlFor="price">Price:</label>
+                        <div className="price-input">
+                            <div>$</div>
+                            <input type="text" name="price-input" id="price-input"/>    
+                        </div>                       
                     </div>
                     <div classNameName="form-group">
                         <label htmlFor="category-input">Category</label>
