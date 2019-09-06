@@ -88,7 +88,7 @@ class RouteProductDetails extends React.Component{
                 
                 <div className="buy-container">
                     <div className="price">${product.price}</div>
-                    <div className="buy-now">BUY ITEM</div>
+                    <div className="buy-now">Buy</div>
                 </div>          
             </div>
         );

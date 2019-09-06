@@ -66,7 +66,7 @@ class RouteUpdateProduct extends React.Component {
                     </div>
         
                     <div className="button">
-                        <button type="submit">UPDATE</button>    
+                        <button type="submit">Update</button>    
                     </div>             
                 </form>
             </div>

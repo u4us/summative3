@@ -69,7 +69,7 @@ class RouteAddProduct extends React.Component{
                     </div>
         
                     <div className="button">
-                        <button type="submit">UPLOAD</button>    
+                        <button type="submit">Upload</button>    
                     </div>             
                 </form>
             </div>
