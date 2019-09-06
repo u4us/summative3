@@ -23,7 +23,9 @@ class App extends React.Component{
       <div className="app">
         <header>
             <div className="box"/>
-            <div className="logo">LOGO</div>
+            <div className="logo">
+              <img src="/newlogo.png" />
+            </div>
             <Link to="/nav"><i className="fas fa-bars"></i></Link>
         </header>
 
