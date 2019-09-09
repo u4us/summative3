@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import {Link, navigate} from '@reach/router';
-import {getProduct, serverURL, deleteProduct} from './API';
+import {getProduct, serverURL, deleteProduct, addComment} from './API';
 
 
 class RouteProductDetails extends React.Component{
@@ -10,13 +10,13 @@ class RouteProductDetails extends React.Component{
         this.state = {
             product: {
                 comments: []
-            }
+            },
+            // currentUser: null,
         }
     }
 
     handleTrashClick = (e) => {
         var {id} = this.props;
-
         deleteProduct(id).then(res => navigate('/'))
     }
 
@@ -27,12 +27,21 @@ class RouteProductDetails extends React.Component{
     handleCommentSubmit =(e) =>{
         e.preventDefault();
 
-        // var formData = new FormData(this.commentForm);
-        // var productId = this.props.id;
-        // var data = {
-            
-        // }
+        var formData = new FormData(this.commentForm);
+        var productId = this.props.id;
+        var data = {
+            description:formData.get('comment-input'),
+            // rating:formData.get('rating-input'),
+            product_id: productId,
+            // user_id: this.props.currentUser.id
+        }
+        addComment(data).then(res => {
+            this.commentForm.reset()
+            this.routeGetProduct(productId)
+        })
     }
+
+
 
     componentDidMount(){
         var {id} = this.props;
@@ -41,6 +50,7 @@ class RouteProductDetails extends React.Component{
 
     render(){
         var {product} = this.state;
+        // var {currentUser} = this.props
         return(
             <div className="main details">
                 <Link className="back-arrow" to="/"><i class="fas fa-arrow-left"></i></Link>
@@ -79,6 +89,7 @@ class RouteProductDetails extends React.Component{
                             })
                         }
                         <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}} className="comment-form">
+                            <label htmlFor="comment-input">Comment</label>
                             <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
                             <button type="submit"><i className="far fa-comment"></i></button>
                         </form>

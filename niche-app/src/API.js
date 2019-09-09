@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-var urlPrefix = 'http://10.2.24.38:3001/api';
-// var urlPrefix = 'http://localhost:3001/api';
-var serverURL = 'http://10.2.24.38:3001/';
-// var serverURL = 'http://localhost:3001/';
+// var urlPrefix = 'http://10.2.24.38:3001/api';
+var urlPrefix = 'http://localhost:3001/api';
+// var serverURL = 'http://10.2.24.38:3001/';
+var serverURL = 'http://localhost:3001/';
 
 
 // product
@@ -25,7 +25,6 @@ var updateProduct =(id, data) =>{
 
 var deleteProduct = (id) => {
     return axios.delete(urlPrefix+'/products/'+id)
-
 }
 
 // category
@@ -37,14 +36,23 @@ var addComment =(data) =>{
     return axios.post(urlPrefix+'/comments', data)
 }
 
+var deleteComment = (id) => {
+    return axios.delete(urlPrefix+'/comments/'+id)
+}
+
 // user
 var addUser =(data) =>{
     return axios.post(urlPrefix+'/users', data)
 }
 
-// var getSingleUser = (id) => {
-//     return axios.get(urlPrefix+'/users/'+id)
-// }
+var getSingleUser = (id) => {
+    return axios.get(urlPrefix+'/users/'+id)
+}
+
+//authenticate
+var  authenticate = (data) => {
+    return axios.post(urlPrefix+'/authenticate',data)          
+}
 
 
 // file upload
@@ -62,9 +70,12 @@ export {
     deleteProduct,
 
     addComment,
+    deleteComment,
 
     addUser,
+    getSingleUser,
     serverURL,
 
+    authenticate,
     uploadFile
 }

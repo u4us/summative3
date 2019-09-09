@@ -17,6 +17,13 @@ class App extends React.Component{
     }
   }
 
+  // setCurrentUser = (user) => {
+  //   this.setState({currentUser:user})
+  // }
+
+  componentDidMount(){
+  }
+
   render(){
     return (
       
