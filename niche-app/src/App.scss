@@ -364,3 +364,48 @@ footer{
         }
     }
 }
+
+/* login */
+.login-container{
+    height: 100vh;
+    background: linear-gradient(27deg, rgba(255,153,102,1) 0%, rgba(255,94,98,1) 100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+
+    .button-group{
+        width: 100%;
+    }
+
+    .button{
+        border-radius: 25px;
+        background-color: white;
+        padding: 0.5rem; 
+        a{
+            text-decoration: none;
+            color: $primary-color;
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .login-button{
+        background-color: transparent;
+        border: 1px white solid;
+        margin-bottom: 1rem;
+        a{
+            color: white;    
+        }    
+    }
+
+    .guest-button{
+        color: white;
+        text-align: center;
+        font-size: 0.8rem;
+        margin-top: 0.8rem;
+        display: block;
+    }
+}

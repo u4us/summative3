@@ -41,8 +41,6 @@ class RouteProductDetails extends React.Component{
         })
     }
 
-
-
     componentDidMount(){
         var {id} = this.props;
         this.routeGetProduct(id);

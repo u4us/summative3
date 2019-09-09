@@ -1,0 +1,477 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.app {
+  margin: auto;
+  position: relative;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+/* header|footer styling */
+header {
+  background: linear-gradient(27deg, #ff9966 0%, #ff5e62 100%);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+header .logo {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+header .logo img {
+  height: 3.5rem;
+}
+
+header .box {
+  width: 1rem;
+  height: 1rem;
+}
+
+header i {
+  font-size: 1.3rem;
+  color: white;
+}
+
+footer {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: linear-gradient(27deg, #ff9966 0%, #ff5e62 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 3rem;
+          flex: 0 0 3rem;
+  padding: 0 1rem;
+}
+
+footer i {
+  font-size: 1.3rem;
+  color: white;
+}
+
+footer .plus {
+  font-size: 2rem;
+}
+
+/* dashboard/home */
+.dash-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: auto;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0.5rem 0;
+  padding-left: 0.5rem;
+}
+
+.dash-items .dash-item {
+  max-width: 30vw;
+  max-height: 30vw;
+  overflow: hidden;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dash-items .dash-item img {
+  height: 30vw;
+}
+
+.dash-items .dash-item .dash-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dash-items .dash-item img[class] {
+  width: 100%;
+}
+
+/* item details page */
+.details .back-arrow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  padding: 1.1rem 1.5rem;
+  font-size: 1.3rem;
+}
+
+.details .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.6rem 1rem;
+}
+
+.details .user .avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 0.7rem;
+}
+
+.details .user .username {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.details .user .location {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: grey;
+}
+
+.details .image-container {
+  max-height: 40vh;
+  overflow: hidden;
+}
+
+.details .image-container img {
+  width: 100%;
+}
+
+.details-content {
+  padding: 1rem 1.5rem;
+  padding-bottom: 4rem;
+}
+
+.details-content .icons {
+  color: #F16266;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.details-content .icons .like {
+  font-size: 1.4rem;
+}
+
+.details-content .icons .edit i {
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+  color: #F16266;
+}
+
+.details-content .name {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.details-content .description {
+  font-size: 0.9rem;
+  border-bottom: 1px grey solid;
+  padding-bottom: 1.5rem;
+}
+
+.details-content .comments {
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.details-content .comments .posted-comment {
+  margin: 1rem 0;
+}
+
+.comment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.comment-form button {
+  font-size: 1.2rem;
+}
+
+.comment-form .comment-input {
+  font-size: 0.9rem;
+  font-family: 'Montserrat';
+}
+
+.comment-form .comment-input:focus {
+  outline: none;
+}
+
+.buy-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 1px grey solid;
+  background-color: white;
+  position: fixed;
+  width: 100vw;
+  height: 4rem;
+  left: 0;
+  top: calc(100vh - 7rem);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1.5rem;
+}
+
+.buy-container .price {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.buy-container .buy-now {
+  background-color: #F16266;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  color: white;
+}
+
+/* add item page */
+.add-product {
+  padding: 2rem;
+}
+
+/* update page */
+.update {
+  padding: 2rem;
+}
+
+/* add/update form */
+.form .form-group {
+  margin-bottom: 2rem;
+}
+
+.form .form-group input[type=file] {
+  background-color: #f8f8f8;
+  color: #F16266;
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  border: none;
+}
+
+.form .form-group input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px #F16266 solid;
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: #F16266;
+}
+
+.form .form-group input:focus {
+  outline: none;
+}
+
+.form .form-group .category-input {
+  width: 100%;
+  margin-top: 0.5rem;
+  border: none;
+  border-bottom: 1px #F16266 solid;
+  border-radius: 0;
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: #F16266;
+}
+
+.form .form-group .category-input:focus {
+  outline: none;
+}
+
+.form .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+
+.form .price .price-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form .price .price-input input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: 0.3rem;
+  color: black;
+  width: 4rem;
+  padding: 0.3rem;
+}
+
+.form .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.form .button button {
+  background-color: #F16266;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 25px;
+  margin-top: 2rem;
+}
+
+/* nav page */
+.nav-container {
+  padding: 3rem;
+}
+
+.nav-container .category {
+  border-bottom: 1px grey solid;
+  padding: 1rem;
+}
+
+.nav-container .sell-item {
+  color: #F16266;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.5rem 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-container .sell-item i {
+  font-size: 1.2rem;
+  color: #F16266;
+}
+
+/* login */
+.login-container {
+  height: 100vh;
+  background: linear-gradient(27deg, #ff9966 0%, #ff5e62 100%);
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-container .button-group {
+  width: 100%;
+}
+
+.login-container .button {
+  border-radius: 25px;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.login-container .button a {
+  text-decoration: none;
+  color: #F16266;
+  display: block;
+  text-align: center;
+}
+
+.login-container .login-button {
+  background-color: transparent;
+  border: 1px white solid;
+  margin-bottom: 1rem;
+}
+
+.login-container .login-button a {
+  color: white;
+}
+
+.login-container .guest-button {
+  color: white;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+  display: block;
+}
+/*# sourceMappingURL=App.css.map */
