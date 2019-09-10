@@ -10,6 +10,8 @@ class RouteDashboard extends React.Component{
         this.state = {
             products: []
         }
+
+        this.props.setLanding(false)
     }
 
     routeGetProducts = () => {

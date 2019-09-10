@@ -3,10 +3,13 @@ import { Link, navigate } from '@reach/router';
 
 
 class RouteLanding extends Component {
+
     handleGuestLogin =(e) =>{
         this.props.setCurrentUser(null)
         navigate('/products')
     }
+
+
 
     render() {
         return (

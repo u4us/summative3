@@ -19,6 +19,7 @@ class App extends React.Component{
       products: [],
       types: [],
       currentUser: null,
+      isLanding: true
     }
   }
 
@@ -26,41 +27,57 @@ class App extends React.Component{
     this.setState({currentUser:user})
   }
 
+  setLanding = (status) => {
+    this.setState({isLanding:status})
+  }
+
   componentDidMount(){
   }
 
   render(){
+    var {isLanding} = this.state
     return (
       
       <div className="app">
-        <header>
-            <div className="box"/>
-            <div className="logo">
-              <img src="/newlogo.png" />
-            </div>
-            <Link to="/nav"><i className="fas fa-bars"></i></Link>
-        </header>
+        {
+          (isLanding == false) ? ( 
+            <header>
+              <div className="box"/>
+              <div className="logo">
+                <img src="/newlogo.png" />
+              </div>
+              <Link to="/nav"><i className="fas fa-bars"></i></Link>
+          </header>
+          ) :null
+        }
+       
 
         <div className="main">
           <Router>
-            <RouteDashboard  path="/products"/>
-            <RouteNav path="/nav"/>
-            <RouteAddProduct currentUser={this.state.currentUser} path="/products/create"/>
-            <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
-            <RouteUpdateProduct path="/products/:id/edit"/>
-            <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
-            <RouteLogin setCurrentUser={this.setCurrentUser} path="/login"/>
-            <RouteSignup path="/users/create"/>
+            <RouteDashboard setLanding={this.setLanding} path="/products"/>
+            <RouteNav setLanding={this.setLanding} path="/nav"/>
+            <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
+            <RouteProductDetails currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
+            <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
+            <RouteLanding setCurrentUser={this.setCurrentUser}path="/"/>
+            <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
+            <RouteSignup setLanding={this.setLanding} path="/users/create"/>
           </Router>
         </div> 
+
+        {
+          (isLanding == false) ? ( 
+            <footer>
+              <Link to="/products"><i className="fas fa-home"></i></Link>
+              <i className="fas fa-search"></i>
+              <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
+              <i className="far fa-heart"></i>
+              <i className="fas fa-user-circle"></i>
+            </footer>
+          ) :null
+        }
         
-        <footer>
-          <Link to="/products"><i className="fas fa-home"></i></Link>
-          <i className="fas fa-search"></i>
-          <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
-          <i className="far fa-heart"></i>
-          <Link to="/"><i className="fas fa-user-circle"></i></Link>
-        </footer>
+
 
     </div>
     );

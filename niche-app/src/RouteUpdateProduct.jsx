@@ -9,6 +9,8 @@ class RouteUpdateProduct extends React.Component {
         this.state = {
             product: {}
         }
+
+        this.props.setLanding(false)
     }
 
     componentDidMount(){

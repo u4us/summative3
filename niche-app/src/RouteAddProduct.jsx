@@ -12,6 +12,8 @@ class RouteAddProduct extends React.Component{
             product: {
             }
         } 
+
+        this.props.setLanding(false)
     }
     
         handleFormSubmit = (e) => {

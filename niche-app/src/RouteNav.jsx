@@ -14,6 +14,8 @@ class RouteNav extends React.Component{
                 // {id:2,name:'Dresses'}
             ]
         }
+
+        this.props.setLanding(false)
     }
     componentDidMount(){
         console.log('Nav route mounted')

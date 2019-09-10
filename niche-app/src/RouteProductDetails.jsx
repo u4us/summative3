@@ -14,6 +14,8 @@ class RouteProductDetails extends React.Component{
             //tentative until user roles implemented
             currentUser: '',
         }
+
+        this.props.setLanding(false)
     }
 
     handleTrashClick = (e) => {
