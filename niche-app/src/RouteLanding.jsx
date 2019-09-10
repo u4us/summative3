@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 
 
-class RouteLoginNav extends Component {
+class RouteLanding extends Component {
+    handleGuestLogin =(e) =>{
+        this.props.setCurrentUser(null)
+        navigate('/products')
+    }
+
     render() {
         return (
             //requires condition to check if user has logged in before setting default redirect as profile
@@ -22,11 +27,11 @@ class RouteLoginNav extends Component {
                             <a href="#">Sign up</a>
                         </div>
                     </Link>
-                    <a class="guest-button" href="#">Use as guest</a>    
+                    <a class="guest-button" onClick={this.handleGuestLogin} href="#">Use as guest</a>    
                 </div>
             </div>
         )
     }
 }
 
-export default RouteLoginNav;
+export default RouteLanding;

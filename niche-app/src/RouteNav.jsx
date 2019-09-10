@@ -28,7 +28,6 @@ class RouteNav extends React.Component{
             <div className="main nav">
                 <div className="nav-container">
                     
-                    
                     {
                         categories.map(category=>{
                             return <div className="category">{category.name}</div>

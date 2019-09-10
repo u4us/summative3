@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
+import {addUser} from './API';
+import { navigate } from '@reach/router';
+
 
 class RouteSignup extends Component {
   handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    var formData = new FormData(this.form);
+    var data ={
+      username: formData.get('username-input'),
+      password: formData.get('password-input'),
+      email: formData.get('email-input'),
+    }
+    addUser(data).then(res=>navigate('/products'))
   }
 
   render(){
@@ -27,7 +39,6 @@ class RouteSignup extends Component {
             <label htmlFor="name-input">Email</label>
             <input type="email" className="form-control" name="email-input" id="email-input" placeholder="Enter email"/>
           </div>
-
 
           <button type="submit" className="btn btn-primary">Register</button>
         </form>

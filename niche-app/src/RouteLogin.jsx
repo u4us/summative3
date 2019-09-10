@@ -31,7 +31,7 @@ class RouteLogin extends Component {
         .then(user => {
             if(user){
                 localStorage.setItem('userId',user.id)
-                navigate('/')
+                navigate('/products')
             }else{
                 this.setState({message:'Try again'})
             }
@@ -65,7 +65,7 @@ class RouteLogin extends Component {
                 {
                     (localStorage.getItem('userId')!==null) 
                     ?
-                    <i className="fas fa-trash-alt" onClick={this.handleLogoutClick}></i>
+                    <i className="fas fa-sign-out-alt" onClick={this.handleLogoutClick}></i>
                     : <></>
                 }
             </div>

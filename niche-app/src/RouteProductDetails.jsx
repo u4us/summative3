@@ -11,13 +11,14 @@ class RouteProductDetails extends React.Component{
             product: {
                 comments: []
             },
-            // currentUser: null,
+            //tentative until user roles implemented
+            currentUser: '',
         }
     }
 
     handleTrashClick = (e) => {
         var {id} = this.props;
-        deleteProduct(id).then(res => navigate('/'))
+        deleteProduct(id).then(res => navigate('/products'))
     }
 
     routeGetProduct =(id) =>{
@@ -29,12 +30,28 @@ class RouteProductDetails extends React.Component{
 
         var formData = new FormData(this.commentForm);
         var productId = this.props.id;
-        var data = {
-            description:formData.get('comment-input'),
-            // rating:formData.get('rating-input'),
-            product_id: productId,
-            user_id: this.props.currentUser.id
+        //tentative until user roles implemented
+        if(this.state.currentUser!==null){
+            var data = {
+                description:formData.get('comment-input'),
+                // rating:formData.get('rating-input'),
+                product_id: productId,
+                user_id: this.props.currentUser.id
+            }
+        } else {
+            var data = {
+                description:formData.get('comment-input'),
+                // rating:formData.get('rating-input'),
+                product_id: productId,
+                // user_id: this.props.currentUser.id
+            }
         }
+        // var data = {
+        //     description:formData.get('comment-input'),
+        //     // rating:formData.get('rating-input'),
+        //     product_id: productId,
+        //     user_id: this.props.currentUser.id
+        // }
         addComment(data).then(res => {
             this.commentForm.reset()
             this.routeGetProduct(productId)

@@ -5,7 +5,7 @@ import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
 import RouteUpdateProduct from './RouteUpdateProduct.jsx';
 import RouteNav from './RouteNav.jsx';
-import RouteLoginNav from './RouteLoginNav.jsx';
+import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
 
@@ -43,23 +43,23 @@ class App extends React.Component{
 
         <div className="main">
           <Router>
-            <RouteDashboard  path="/"/>
+            <RouteDashboard  path="/products"/>
             <RouteNav path="/nav"/>
-            <RouteAddProduct path="/products/create"/>
+            <RouteAddProduct currentUser={this.state.currentUser} path="/products/create"/>
             <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
             <RouteUpdateProduct path="/products/:id/edit"/>
-            <RouteLoginNav path="/auth"/>
+            <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
             <RouteLogin setCurrentUser={this.setCurrentUser} path="/login"/>
             <RouteSignup path="/users/create"/>
           </Router>
         </div> 
         
         <footer>
-          <Link to="/"><i className="fas fa-home"></i></Link>
+          <Link to="/products"><i className="fas fa-home"></i></Link>
           <i className="fas fa-search"></i>
           <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
           <i className="far fa-heart"></i>
-          <Link to="/auth"><i className="fas fa-user-circle"></i></Link>
+          <Link to="/"><i className="fas fa-user-circle"></i></Link>
         </footer>
 
     </div>

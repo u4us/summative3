@@ -11,8 +11,8 @@ class RouteAddProduct extends React.Component{
         this.state ={
             product: {
             }
-            } 
-        }
+        } 
+    }
     
         handleFormSubmit = (e) => {
             e.preventDefault();
@@ -27,12 +27,13 @@ class RouteAddProduct extends React.Component{
                     description:formData.get('description-input'),
                     price:formData.get('price-input'),
                     category_id:formData.get('category-input'),
-                    photo:fileName
+                    photo:fileName,
+
+                    user_id: this.props.currentUser.id,
                   }
 
-                  addProduct(data).then(res => navigate('/'))
+                  addProduct(data).then(res => navigate('/products'))
             })
-
         }
 
     render(){
