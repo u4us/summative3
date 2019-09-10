@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {navigate} from '@reach/router';
+import {authenticate} from './API';
 
 class RouteLogin extends Component {
 
@@ -10,7 +12,36 @@ class RouteLogin extends Component {
     }
 
     handleFormSubmit =(e) =>{
+        e.preventDefault();
 
+        var formData = new FormData(this.form);
+        var data = {
+            username:formData.get('username-input'),
+            password:formData.get('password-input'),
+        }
+    
+        var {setCurrentUser} = this.props
+    
+        authenticate(data)
+        .then(res => {
+            var user = res.data
+            setCurrentUser(user)
+            return user
+        })
+        .then(user => {
+            if(user){
+                localStorage.setItem('userId',user.id)
+                navigate('/')
+            }else{
+                this.setState({message:'Try again'})
+            }
+        })
+    }
+
+    handleLogoutClick = () => {
+        localStorage.removeItem('userId')
+        this.props.setCurrentUser(null)
+        navigate('/login')
     }
     
     render() {
@@ -30,6 +61,13 @@ class RouteLogin extends Component {
                     <button type="submit" className="btn btn-primary">Login</button>
                     <p>{this.state.message}</p>
                 </form>
+
+                {
+                    (localStorage.getItem('userId')!==null) 
+                    ?
+                    <i className="fas fa-trash-alt" onClick={this.handleLogoutClick}></i>
+                    : <></>
+                }
             </div>
         )
     }

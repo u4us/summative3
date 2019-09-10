@@ -6,6 +6,9 @@ import RouteAddProduct from './RouteAddProduct.jsx';
 import RouteUpdateProduct from './RouteUpdateProduct.jsx';
 import RouteNav from './RouteNav.jsx';
 import RouteLoginNav from './RouteLoginNav.jsx';
+import RouteLogin from './RouteLogin.jsx';
+import RouteSignup from './RouteSignup.jsx';
+
 
 import './App.scss';
 
@@ -15,13 +18,13 @@ class App extends React.Component{
     this.state = {
       products: [],
       types: [],
-      // currentUser: null,
+      currentUser: null,
     }
   }
 
-  // setCurrentUser = (user) => {
-  //   this.setState({currentUser:user})
-  // }
+  setCurrentUser = (user) => {
+    this.setState({currentUser:user})
+  }
 
   componentDidMount(){
   }
@@ -43,9 +46,11 @@ class App extends React.Component{
             <RouteDashboard  path="/"/>
             <RouteNav path="/nav"/>
             <RouteAddProduct path="/products/create"/>
-            <RouteProductDetails path="/products/:id"/>
+            <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
             <RouteUpdateProduct path="/products/:id/edit"/>
-            <RouteLoginNav path="/login"/>
+            <RouteLoginNav path="/auth"/>
+            <RouteLogin setCurrentUser={this.setCurrentUser} path="/login"/>
+            <RouteSignup path="/users/create"/>
           </Router>
         </div> 
         
@@ -54,7 +59,7 @@ class App extends React.Component{
           <i className="fas fa-search"></i>
           <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
           <i className="far fa-heart"></i>
-          <Link to="/login"><i className="fas fa-user-circle"></i></Link>
+          <Link to="/auth"><i className="fas fa-user-circle"></i></Link>
         </footer>
 
     </div>

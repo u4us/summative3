@@ -11,14 +11,17 @@ class RouteLoginNav extends Component {
                     <img class="logo" src="newlogo.png" alt=""/>    
                 </div>   
                 <div class="button-group">
-                    <Link to="">
+                    <Link to="/login">
                         <div class="button login-button">
                             <a href="#">Login</a>
                         </div>
                     </Link>
-                    <div class="button signup-button">
-                        <a href="#">Sign up</a>
-                    </div>
+
+                    <Link to="/users/create">
+                        <div class="button signup-button">
+                            <a href="#">Sign up</a>
+                        </div>
+                    </Link>
                     <a class="guest-button" href="#">Use as guest</a>    
                 </div>
             </div>

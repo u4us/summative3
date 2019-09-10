@@ -33,7 +33,7 @@ class RouteProductDetails extends React.Component{
             description:formData.get('comment-input'),
             // rating:formData.get('rating-input'),
             product_id: productId,
-            // user_id: this.props.currentUser.id
+            user_id: this.props.currentUser.id
         }
         addComment(data).then(res => {
             this.commentForm.reset()
@@ -48,10 +48,10 @@ class RouteProductDetails extends React.Component{
 
     render(){
         var {product} = this.state;
-        // var {currentUser} = this.props
+        var {currentUser} = this.props
         return(
             <div className="main details">
-                <Link className="back-arrow" to="/"><i class="fas fa-arrow-left"></i></Link>
+                <Link className="back-arrow" to="/"><i className="fas fa-arrow-left"></i></Link>
                 <div className="user">
                     <img className="avatar" src="/avatar.jpg" alt="avatar"/>
                     <div className="user-info">
@@ -79,7 +79,7 @@ class RouteProductDetails extends React.Component{
                             product.comments.map(comment => {
                                 var commentProps = {
                                 comment: comment,
-                                // currentUser:currentUser,
+                                currentUser:currentUser,
                                 key: comment.id,
                                 refreshData: () => this.routeGetProduct(product.id)
                                 }
