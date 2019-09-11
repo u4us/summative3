@@ -16,9 +16,12 @@ class Comment extends React.Component{
         var{comment} = this.props;
         return(
             <>
-            <div className="posted-comment">{comment.description}</div>
-            <div>By {comment.user? comment.user.username: 'anon'}</div>
-            <i data-commentid={comment.id} className="fas fa-trash-alt" onClick={this.handleCommentDelete}></i>
+            <div className="comment">
+                <div className="comment-user">{comment.user? comment.user.username: 'anon'}</div>
+                <div className="posted-comment">{comment.description}</div>
+                <i data-commentid={comment.id} className="fas fa-trash-alt" onClick={this.handleCommentDelete}></i>    
+            </div>
+            
             </>
         );
     }

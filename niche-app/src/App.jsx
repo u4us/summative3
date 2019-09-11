@@ -43,9 +43,7 @@ class App extends React.Component{
           (isLanding == false) ? ( 
             <header>
               <div className="box"/>
-              <div className="logo">
-                <img src="/newlogo.png" />
-              </div>
+              <img className="logo" src="/newlogo.png" />
               <Link to="/nav"><i className="fas fa-bars"></i></Link>
           </header>
           ) :null

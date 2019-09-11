@@ -70,7 +70,7 @@ class RouteProductDetails extends React.Component{
         var {currentUser} = this.props
         return(
             <div className="main details">
-                <Link className="back-arrow" to="/"><i className="fas fa-arrow-left"></i></Link>
+                <Link className="back-arrow" to="/products"><i className="fas fa-arrow-left"></i></Link>
                 <div className="user">
                     <img className="avatar" src="/avatar.jpg" alt="avatar"/>
                     <div className="user-info">
@@ -106,7 +106,6 @@ class RouteProductDetails extends React.Component{
                             })
                         }
                         <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}} className="comment-form">
-                            <label htmlFor="comment-input">Comment</label>
                             <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
                             <button type="submit"><i className="far fa-comment"></i></button>
                         </form>
