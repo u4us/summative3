@@ -18,8 +18,8 @@ class RouteSignup extends Component {
 
   render(){
     return (
-      <div class="main">
-        <h3>Register</h3>
+      <div class="main landing-form">
+        <h2>Register</h2>
         <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
           {/* <div className="form-group">
             <label htmlFor="name-input">Name</label>
@@ -27,17 +27,17 @@ class RouteSignup extends Component {
           </div> */}
           <div className="form-group">
             <label htmlFor="name-input">Username</label>
-            <input type="text" className="form-control" name="username-input" id="username-input" placeholder="Enter username"/>
+            <input type="text" className="form-control" name="username-input" id="username-input"/>
           </div>
 
           <div className="form-group">
             <label htmlFor="name-input">Password</label>
-            <input type="password" className="form-control" name="password-input" id="password-input" placeholder="Enter password"/>
+            <input type="password" className="form-control" name="password-input" id="password-input"/>
           </div>
 
           <div className="form-group">
             <label htmlFor="name-input">Email</label>
-            <input type="email" className="form-control" name="email-input" id="email-input" placeholder="Enter email"/>
+            <input type="email" className="form-control" name="email-input" id="email-input"/>
           </div>
 
           <button type="submit" className="btn btn-primary">Register</button>

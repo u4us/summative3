@@ -189,13 +189,22 @@ footer{
 
         .comment{
             display: flex;
-            border: 1px red solid;
             align-items: center;
-            padding: 0;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+
+            .comment-details{
+                display: flex;
+            }
+
+            i{
+                color: $primary-color;
+            }
         }
 
         .comment-user{
             font-weight: 700;
+            margin-right: 0.5rem;
         }
     }
 }
@@ -204,7 +213,7 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 
     button{
         font-size: 1.2rem;
@@ -413,9 +422,9 @@ footer{
     }
 }
 
-/* login */
+/* login/signup page */
 
-.login{
+.landing-form{
     height: 100vh;
     background: linear-gradient(27deg, rgba(255,153,102,1) 0%, rgba(255,94,98,1) 100%);
     padding: 4rem 2rem;
@@ -425,7 +434,7 @@ footer{
         margin: auto;
         margin-top: 4rem;
 
-        .password{
+        .form-group{
             margin-top: 2rem;
         }
 

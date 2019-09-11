@@ -46,7 +46,7 @@ class RouteLogin extends Component {
     
     render() {
         return (
-            <div className="main login">
+            <div className="main landing-form">
                 <h2>Login</h2>
                 <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div className="form-group">
@@ -54,7 +54,7 @@ class RouteLogin extends Component {
                     <input type="text" className="form-control" name="username-input" id="username-input"/>
                     </div>
 
-                    <div className="form-group password">
+                    <div className="form-group">
                     <label htmlFor="name-input">Password:</label>
                     <input type="password" className="form-control" name="password-input" id="password-input"/>
                     </div>
