@@ -53,7 +53,7 @@ class App extends React.Component{
         <div className="main">
           <Router>
             <RouteDashboard setLanding={this.setLanding} path="/products"/>
-            <RouteNav setLanding={this.setLanding} path="/nav"/>
+            <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
             <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
             <RouteProductDetails currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
             <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>

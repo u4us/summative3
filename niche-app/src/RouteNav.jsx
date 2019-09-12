@@ -26,6 +26,7 @@ class RouteNav extends React.Component{
 
     render(){
         var {categories} = this.state
+        var {currentUser} = this.props
         return(
             <div className="main nav">
                 <div className="nav-container">
@@ -35,11 +36,22 @@ class RouteNav extends React.Component{
                             return <div className="category">{category.name}</div>
                         })
                     }
-                    <div className="sell-item">
-                      
-                        <div className="sell">sell an item</div>
-                        <Link to="/products/create"><i className="fas fa-plus"></i></Link>
-                    </div>          
+                    {
+                        currentUser ? (
+                            <>
+                            <div className="sell-item">                    
+                                <div className="sell">sell an item</div>
+                                <Link to="/products/create"><i className="fas fa-plus"></i></Link>
+                            </div>
+                            <div className="log-button">
+                                <Link className="button" to="/login">logout</Link> 
+                            </div>
+                            </>
+                        ) : <div className="log-button">
+                                <Link className="button" to="/login">login</Link> 
+                            </div>
+                    }
+                              
                 </div>
             </div>
         );
