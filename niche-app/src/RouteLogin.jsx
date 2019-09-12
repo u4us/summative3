@@ -8,7 +8,9 @@ class RouteLogin extends Component {
 		super(props);
 		this.state = {
 			message:''
-		}
+        }
+        
+        this.props.setLanding(true)
     }
 
     handleFormSubmit =(e) =>{

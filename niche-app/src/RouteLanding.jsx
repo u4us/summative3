@@ -19,17 +19,9 @@ class RouteLanding extends Component {
                     <img class="logo" src="newlogo.png" alt=""/>    
                 </div>   
                 <div class="button-group">
-                    <Link to="/login">
-                        <div class="button login-button">
-                            <a href="#">Login</a>
-                        </div>
-                    </Link>
+                    <Link className="landing-button login-button" to="/login">Login</Link>
 
-                    <Link to="/users/create">
-                        <div class="button signup-button">
-                            <a href="#">Sign up</a>
-                        </div>
-                    </Link>
+                    <Link className="landing-button" to="/users/create">Sign up</Link>
                     <a class="guest-button" onClick={this.handleGuestLogin} href="#">Use as guest</a>    
                 </div>
             </div>
