@@ -31,6 +31,11 @@ var deleteProduct = (id) => {
 var getCategories =() =>{
     return axios.get(urlPrefix+'/categories')
 }
+
+var getCategory = (id) => {
+    return axios.get(urlPrefix+'/types/'+id)
+}
+
 // comment
 var addComment =(data) =>{
     return axios.post(urlPrefix+'/comments', data)
@@ -67,6 +72,8 @@ export {
     addProduct,
     updateProduct,
     getCategories,
+    getCategory,
+    
     deleteProduct,
 
     addComment,
