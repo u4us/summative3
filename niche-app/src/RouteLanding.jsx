@@ -9,8 +9,6 @@ class RouteLanding extends Component {
         navigate('/products')
     }
 
-
-
     render() {
         return (
             //requires condition to check if user has logged in before setting default redirect as profile

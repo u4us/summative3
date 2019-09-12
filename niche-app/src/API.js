@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// var urlPrefix = 'http://10.2.24.38:3001/api';
-var urlPrefix = 'http://localhost:3001/api';
-// var serverURL = 'http://10.2.24.38:3001/';
-var serverURL = 'http://localhost:3001/';
+var urlPrefix = 'http://10.2.24.37:3001/api';
+// var urlPrefix = 'http://localhost:3001/api';
+var serverURL = 'http://10.2.24.37:3001/';
+// var serverURL = 'http://localhost:3001/';
 
 
 // product
@@ -41,6 +41,10 @@ var addComment =(data) =>{
     return axios.post(urlPrefix+'/comments', data)
 }
 
+var updateComment =(id, data) =>{
+    return axios.put(urlPrefix+'/comments/'+id, data)
+}
+
 var deleteComment = (id) => {
     return axios.delete(urlPrefix+'/comments/'+id)
 }
@@ -71,18 +75,20 @@ export {
     getProduct,
     addProduct,
     updateProduct,
-    getCategories,
-    getCategory,
-    
     deleteProduct,
 
+    getCategories,
+    getCategory,
+
     addComment,
+    updateComment,
     deleteComment,
 
     addUser,
     getSingleUser,
-    serverURL,
-
+    
     authenticate,
-    uploadFile
+    uploadFile,
+
+    serverURL,
 }
