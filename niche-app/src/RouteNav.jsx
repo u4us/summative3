@@ -17,11 +17,18 @@ class RouteNav extends React.Component{
 
         this.props.setLanding(false)
     }
+
     componentDidMount(){
         console.log('Nav route mounted')
         getCategories().then(res => {
             this.setState({categories:res.data})
         })
+    }
+
+    handleLogoutClick = () => {
+        localStorage.removeItem('userId')
+        this.props.setCurrentUser(null)
+        navigate('/login')
     }
 
     render(){
@@ -44,13 +51,23 @@ class RouteNav extends React.Component{
                                 <Link to="/products/create"><i className="fas fa-plus"></i></Link>
                             </div>
                             <div className="log-button">
-                                <Link className="button" to="/login">logout</Link> 
+                                <Link className="button" to="/" onClick={this.handleLogoutClick}>logout</Link> 
                             </div>
                             </>
                         ) : <div className="log-button">
                                 <Link className="button" to="/login">login</Link> 
                             </div>
                     }
+                    
+
+                    {/* //////potential logout code
+                    
+                        {
+                            (localStorage.getItem('userId')!== null) 
+                            ?
+                            <i className="fas fa-sign-out-alt" onClick={this.handleLogoutClick}></i>
+                            : <></>
+                        } */}
                               
                 </div>
             </div>

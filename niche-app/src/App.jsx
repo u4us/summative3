@@ -23,15 +23,15 @@ class App extends React.Component{
     }
   }
 
+  componentDidMount(){
+  }
+
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
   }
 
   setLanding = (status) => {
     this.setState({isLanding:status})
-  }
-
-  componentDidMount(){
   }
 
   render(){

@@ -18,13 +18,14 @@ class RouteProductDetails extends React.Component{
         this.props.setLanding(false)
     }
 
+    componentDidMount(){
+        var {id} = this.props;
+        this.routeGetProduct(id);
+    }
+
     handleTrashClick = (e) => {
         var {id} = this.props;
         deleteProduct(id).then(res => navigate('/products'))
-    }
-
-    routeGetProduct =(id) =>{
-        getProduct(id).then(res => this.setState({product:res.data}))
     }
 
     handleCommentSubmit =(e) =>{
@@ -60,9 +61,8 @@ class RouteProductDetails extends React.Component{
         })
     }
 
-    componentDidMount(){
-        var {id} = this.props;
-        this.routeGetProduct(id);
+    routeGetProduct =(id) =>{
+        getProduct(id).then(res => this.setState({product:res.data}))
     }
 
     render(){

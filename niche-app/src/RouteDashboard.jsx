@@ -14,14 +14,14 @@ class RouteDashboard extends React.Component{
         this.props.setLanding(false)
     }
 
+    componentDidMount(){
+        this.routeGetProducts();
+    }
+
     routeGetProducts = () => {
         getProducts().then(res => {
             this.setState({products:res.data})
         })
-    }
-
-    componentDidMount(){
-        this.routeGetProducts();
     }
 
     render(){

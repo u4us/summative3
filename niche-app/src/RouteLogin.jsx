@@ -39,12 +39,6 @@ class RouteLogin extends Component {
             }
         })
     }
-
-    handleLogoutClick = () => {
-        localStorage.removeItem('userId')
-        this.props.setCurrentUser(null)
-        navigate('/login')
-    }
     
     render() {
         return (
@@ -52,25 +46,18 @@ class RouteLogin extends Component {
                 <h2>Login</h2>
                 <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div className="form-group">
-                    <label htmlFor="name-input">Username:</label>
+                    <label htmlFor="name-input">Username</label>
                     <input type="text" className="form-control" name="username-input" id="username-input"/>
                     </div>
 
                     <div className="form-group">
-                    <label htmlFor="name-input">Password:</label>
+                    <label htmlFor="name-input">Password</label>
                     <input type="password" className="form-control" name="password-input" id="password-input"/>
                     </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                     <p>{this.state.message}</p>
                 </form>    
                 
-
-                {
-                    (localStorage.getItem('userId')!==null) 
-                    ?
-                    <i className="fas fa-sign-out-alt" onClick={this.handleLogoutClick}></i>
-                    : <></>
-                }
             </div>
         )
     }

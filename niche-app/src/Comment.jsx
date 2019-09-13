@@ -18,11 +18,9 @@ class Comment extends React.Component{
         deleteComment(commentId).then(res => refreshData())
     }
 
-    handleCommentEdit =(e) =>{
+    handleCommentEdit = (e) =>{}
 
-    }
-
-    handleCommentEditSubmit =(e) =>{
+    handleCommentEditSubmit = (e) =>{
         e.preventDefault();
 
         var formData = new FormData(this.form);
