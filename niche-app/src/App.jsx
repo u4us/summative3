@@ -1,5 +1,6 @@
 import React from 'react';
-import { Router, Link, Redirect,navigate } from '@reach/router';
+import {Router, Link, Redirect,navigate} from '@reach/router';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';

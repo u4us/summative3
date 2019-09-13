@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Link, navigate } from '@reach/router';
+import React, {Component} from 'react'
+import {Link, navigate} from '@reach/router';
 
 
 class RouteLanding extends Component {
