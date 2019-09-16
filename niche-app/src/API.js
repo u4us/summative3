@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-var urlPrefix = 'http://10.2.24.37:3001/api';
+var urlPrefix = 'http://10.2.24.25:3001/api';
 // var urlPrefix = 'http://localhost:3001/api';
-var serverURL = 'http://10.2.24.37:3001/';
+var serverURL = 'http://10.2.24.25:3001/';
 // var serverURL = 'http://localhost:3001/';
 
 

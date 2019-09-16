@@ -9,6 +9,7 @@ import RouteNav from './RouteNav.jsx';
 import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
+import RouteProfile from './RouteProfile.jsx';
 
 
 import './App.scss';
@@ -19,7 +20,7 @@ class App extends React.Component{
     this.state = {
       products: [],
       types: [],
-      currentUser: null,
+      currentUser: '',
       isLanding: true
     }
   }
@@ -61,6 +62,7 @@ class App extends React.Component{
             <RouteLanding setCurrentUser={this.setCurrentUser}path="/"/>
             <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
             <RouteSignup setLanding={this.setLanding} path="/users/create"/>
+            <RouteProfile currentUser={this.state.currentUser} path="/user"/>
           </Router>
         </div> 
 
@@ -71,12 +73,10 @@ class App extends React.Component{
               <i className="fas fa-search"></i>
               <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
               <i className="far fa-heart"></i>
-              <i className="fas fa-user-circle"></i>
+              <Link to="/user"><i className="fas fa-user-circle"></i></Link>
             </footer>
           ) :null
         }
-        
-
 
     </div>
     );

@@ -5,7 +5,15 @@ import {Link, navigate} from '@reach/router';
 class RouteLanding extends Component {
 
     handleGuestLogin = (e) =>{
-        this.props.setCurrentUser(null)
+        e.preventDefault();
+        var data = {
+            username:'guest',
+            password:'guest',
+        }
+    
+        var {setCurrentUser} = this.props
+    
+        setCurrentUser(data)
         navigate('/products')
     }
 
