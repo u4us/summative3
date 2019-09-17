@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Link, Redirect,navigate} from '@reach/router';
+import {Router, Link, Redirect, navigate} from '@reach/router';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
@@ -38,6 +38,7 @@ class App extends React.Component{
 
   render(){
     var {isLanding, currentUser} = this.state
+
     return (
       
       <div className="app">
@@ -50,22 +51,20 @@ class App extends React.Component{
           </header>
           ) :null
         }
-       
-
         <div className="main">
-          <Router>
-            <RouteDashboard setLanding={this.setLanding} path="/products"/>
-            <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
-            <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
-            <RouteProductDetails currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
-            <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
-            <RouteLanding setCurrentUser={this.setCurrentUser}path="/"/>
-            <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
-            <RouteSignup setLanding={this.setLanding} path="/users/create"/>
-            <RouteProfile currentUser={this.state.currentUser} path="/user"/>
-            <RouteCategory path="/nav/id"/>
-          </Router>
-        </div> 
+            <Router>
+              <RouteDashboard setLanding={this.setLanding} path="/products"/>
+              <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
+              <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
+              <RouteProductDetails currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
+              <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
+              <RouteLanding setCurrentUser={this.setCurrentUser}path="/"/>
+              <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
+              <RouteSignup setLanding={this.setLanding} path="/users/create"/>
+              <RouteProfile currentUser={this.state.currentUser} path="/user"/>
+              <RouteCategory path="/nav/id"/>
+            </Router>
+        </div>
 
         {
           (isLanding == false) ? ( 

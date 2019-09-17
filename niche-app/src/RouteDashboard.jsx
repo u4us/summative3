@@ -27,6 +27,7 @@ class RouteDashboard extends React.Component{
     render(){
         return(
             <div className="main dashboard">
+                <p className="dash-title">LATEST FOR SALE</p>
                 <div className="dash-items">
                     
                     {
@@ -46,6 +47,7 @@ class RouteDashboard extends React.Component{
                             )
                         })
                     }
+                    <div className="empty"></div>
   
                 </div>        
             </div>
