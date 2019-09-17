@@ -10,8 +10,6 @@ class RouteNav extends React.Component{
 
         this.state = {
             categories:[
-                // {id:1,name:'Shoes'},
-                // {id:2,name:'Dresses'}
             ]
         }
 
@@ -40,7 +38,9 @@ class RouteNav extends React.Component{
                     
                     {
                         categories.map(category=>{
-                            return <div className="category">{category.name}</div>
+                            return (
+                                <Link to={'/nav/'+category.id}><div className="category">{category.name}</div></Link>
+                            )
                         })
                     }
                     {

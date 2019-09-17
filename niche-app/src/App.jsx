@@ -10,7 +10,7 @@ import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
 import RouteProfile from './RouteProfile.jsx';
-
+import RouteCategory from './RouteCategory.jsx';
 
 import './App.scss';
 
@@ -37,7 +37,7 @@ class App extends React.Component{
   }
 
   render(){
-    var {isLanding} = this.state
+    var {isLanding, currentUser} = this.state
     return (
       
       <div className="app">
@@ -63,6 +63,7 @@ class App extends React.Component{
             <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
             <RouteSignup setLanding={this.setLanding} path="/users/create"/>
             <RouteProfile currentUser={this.state.currentUser} path="/user"/>
+            <RouteCategory path="/nav/id"/>
           </Router>
         </div> 
 
@@ -71,7 +72,11 @@ class App extends React.Component{
             <footer>
               <Link to="/products"><i className="fas fa-home"></i></Link>
               <i className="fas fa-search"></i>
-              <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
+              {
+                currentUser.username !== 'guest' || '' ?
+                (<Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>)
+                : null
+              }
               <i className="far fa-heart"></i>
               <Link to="/user"><i className="fas fa-user-circle"></i></Link>
             </footer>
