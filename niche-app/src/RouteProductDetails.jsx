@@ -116,8 +116,9 @@ class RouteProductDetails extends React.Component{
                             product.comments.map(comment => {
                                 var commentProps = {
                                 comment: comment,
-                                currentUser:currentUser,
+                                currentUser: currentUser,
                                 key: comment.id,
+                                product_id: this.props,
                                 refreshData: () => this.routeGetProduct(product.id)
                                 }
                                 return <Comment {...commentProps} />

@@ -1,10 +1,16 @@
 import axios from 'axios';
 
+<<<<<<< HEAD
 var urlPrefix = 'http://10.2.24.31:3001/api';
 // var urlPrefix = 'http://localhost:3001/api';
 var serverURL = 'http://10.2.24.31:3001/';
 // var serverURL = 'http://localhost:3001/';
-
+=======
+// var urlPrefix = 'http://10.2.24.37:3001/api';
+var urlPrefix = 'http://localhost:3001/api';
+// var serverURL = 'http://10.2.24.37:3001/';
+var serverURL = 'http://localhost:3001/';
+>>>>>>> c6ca52d968e4d952e127a9e7f6f27483b5d72f3b
 
 // product
 var getProducts = () => {
