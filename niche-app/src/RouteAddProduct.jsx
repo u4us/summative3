@@ -39,6 +39,8 @@ class RouteAddProduct extends React.Component{
         }
 
     render(){
+        var {currentUser} = this.props
+        
         return(
             <div className="main add-product">
                 <form className ="form" onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>

@@ -12,7 +12,7 @@ class RouteProductDetails extends React.Component{
                 comments: []
             },
             //tentative until user roles implemented
-            currentUser: '',
+            // currentUser: '',
         }
 
         this.props.setLanding(false)
@@ -34,27 +34,27 @@ class RouteProductDetails extends React.Component{
         var formData = new FormData(this.commentForm);
         var productId = this.props.id;
         //tentative until user roles implemented
-        if(this.state.currentUser!==null){
-            var data = {
-                description:formData.get('comment-input'),
-                // rating:formData.get('rating-input'),
-                product_id: productId,
-                user_id: this.props.currentUser.id
-            }
-        } else {
-            var data = {
-                description:formData.get('comment-input'),
-                // rating:formData.get('rating-input'),
-                product_id: productId,
-                // user_id: this.props.currentUser.id
-            }
-        }
-        // var data = {
-        //     description:formData.get('comment-input'),
-        //     // rating:formData.get('rating-input'),
-        //     product_id: productId,
-        //     user_id: this.props.currentUser.id
+        // if(this.props.currentUser!==null){
+        //     var data = {
+        //         description:formData.get('comment-input'),
+        //         // rating:formData.get('rating-input'),
+        //         product_id: productId,
+        //         user_id: this.props.currentUser.id
+        //     }
+        // } else {
+        //     var data = {
+        //         description:formData.get('comment-input'),
+        //         // rating:formData.get('rating-input'),
+        //         product_id: productId,
+        //         // user_id: this.props.currentUser.id
+        //     }
         // }
+        var data = {
+            description:formData.get('comment-input'),
+            // rating:formData.get('rating-input'),
+            product_id: productId,
+            user_id: this.props.currentUser.id
+        }
         addComment(data).then(res => {
             this.commentForm.reset()
             this.routeGetProduct(productId)
@@ -86,10 +86,16 @@ class RouteProductDetails extends React.Component{
                 <div className="details-content">
                     <div className="icons">
                         <i className="far fa-heart like"></i>
-                        <div className="edit">
-                            <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
-                            <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
-                        </div>
+                        {
+                            product.user_id == currentUser.id
+                            ?(
+                                <div className="edit">
+                                    <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
+                                    <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
+                                </div>
+                            ):null
+                        }
+                        
                     </div>
                     <div className="name">{product.name}</div>   
                     <div className="description">{product.description}</div> 

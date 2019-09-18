@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import {getCategory} from './API';
+import { Router, Link } from '@reach/router';
+
+import {getCategory, serverURL} from './API';
 
 class RouteCategory extends Component {
     constructor(props){
@@ -12,19 +14,18 @@ class RouteCategory extends Component {
     routeGetCategory =(id) =>{
         getCategory(id).then(res => this.setState({category: res.data}))
     }
-//incomplete, need to pass the category id from nav
 
-    // componentDidMount(){
-    //     var {id} = this.props
-    //     this.routeGetCategory(id)
-    // }
+    componentDidMount(){
+        var {id} = this.props
+        this.routeGetCategory(id)
+    }
 
-    // componentDidUpdate(prevProps, prevState){
-    //     var {id} = this.props
-    //     if(id != prevProps.id){
-    //       this.routeGetCategory(id)
-    //     }
-    // }
+    componentDidUpdate(prevProps, prevState){
+        var {id} = this.props
+        if(id != prevProps.id){
+          this.routeGetCategory(id)
+        }
+    }
 
     render() {
         var {category} = this.state
@@ -43,6 +44,7 @@ class RouteCategory extends Component {
             
                     };
                     return (
+                        // <Product {...productProps} />
                         <Link to={'/products/'+product.id}>
                             <div className="dash-item">
                                 <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
