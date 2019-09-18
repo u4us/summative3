@@ -33,10 +33,10 @@ class RouteDashboard extends React.Component{
                     {
                         this.state.products.map((product) => {
                             
-                            var productProps = {
-                                ...product,
-                                key: product.id
-                            };
+                            // var productProps = {
+                            //     ...product,
+                            //     key: product.id
+                            // };
 
                             return(
                                 <Link to={'/products/'+product.id}>

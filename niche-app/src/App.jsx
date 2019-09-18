@@ -28,13 +28,10 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    
     var userId = localStorage.getItem('userId')
-
     if(userId){
       this.loadCurrentUserById(userId)
     }
-
   }
 
   loadCurrentUserById = (id) => {
@@ -74,7 +71,7 @@ class App extends React.Component{
               <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
               <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create"/>
               <RouteProfile currentUser={this.state.currentUser} path="/user"/>
-              <RouteCategory path="/nav/id"/>
+              <RouteCategory path="/nav/:id"/>
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
               <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} default />
