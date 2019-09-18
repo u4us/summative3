@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {addUser} from './API';
-import { navigate } from '@reach/router';
+import {navigate} from '@reach/router';
 
 
 class RouteSignup extends Component {
@@ -13,7 +13,18 @@ class RouteSignup extends Component {
       password: formData.get('password-input'),
       email: formData.get('email-input'),
     }
-    addUser(data).then(res=>navigate('/products'))
+    var {setCurrentUser} = this.props
+
+    addUser(data)
+    .then(res=>{
+      var user = res.data
+      setCurrentUser(user)
+      return user
+    })
+    .then(user => {
+          localStorage.setItem('userId',user.id)
+          navigate('/products')
+    })
   }
 
   render(){

@@ -39,12 +39,12 @@ class RouteNav extends React.Component{
                     {
                         categories.map(category=>{
                             return (
-                                <Link to={'/nav/'+category.id}><div className="category">{category.name}</div></Link>
+                                <Link className="nav-link" to={'/nav/'+category.id}><div className="category">{category.name}</div></Link>
                             )
                         })
                     }
                     {
-                        currentUser ? (
+                        localStorage.getItem('userId')!== null ? (
                             <>
                             <div className="sell-item">                    
                                 <div className="sell">sell an item</div>
