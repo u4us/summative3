@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import {Link, navigate} from '@reach/router';
-import {getProduct, serverURL, deleteProduct, addComment} from './API';
+import {getProduct, serverURL, deleteProduct, addComment,addFavourite} from './API';
 
 
 class RouteProductDetails extends React.Component{
@@ -27,6 +27,18 @@ class RouteProductDetails extends React.Component{
         var {id} = this.props;
         deleteProduct(id).then(res => navigate('/products'))
     }
+
+    handleFavouriteClick = () => {
+       
+        var {id,currentUser,loadCurrentUserById} = this.props;
+        addFavourite(currentUser.id,{productid:id}).then(res => {
+            loadCurrentUserById(currentUser.id)
+            navigate('/favourites')
+        })
+    }
+
+    //reload bug needs fixing
+    
 
     handleCommentSubmit =(e) =>{
         e.preventDefault();
@@ -85,7 +97,7 @@ class RouteProductDetails extends React.Component{
 
                 <div className="details-content">
                     <div className="icons">
-                        <i className="far fa-heart like"></i>
+                        <i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
                         {
                             product.user_id == currentUser.id
                             ?(

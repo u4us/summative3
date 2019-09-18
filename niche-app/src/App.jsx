@@ -13,6 +13,8 @@ import RouteProfile from './RouteProfile.jsx';
 import RouteCategory from './RouteCategory.jsx';
 
 import './App.scss';
+import RouteMyFavourites from './RouteMyFavourites.jsx';
+import { getSingleUser } from './API.js';
 
 class App extends React.Component{
   constructor(props){
@@ -26,8 +28,18 @@ class App extends React.Component{
   }
 
   componentDidMount(){
+    
+    var userId = localStorage.getItem('userId')
+
+    if(userId){
+      this.loadCurrentUserById(userId)
+    }
+
   }
 
+  loadCurrentUserById = (id) => {
+    getSingleUser(id).then(res => this.setState({currentUser:res.data}))
+  }
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
   }
@@ -56,13 +68,16 @@ class App extends React.Component{
               <RouteDashboard setLanding={this.setLanding} path="/products"/>
               <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
-              <RouteProductDetails currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
+              <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
               <RouteLanding setCurrentUser={this.setCurrentUser}path="/"/>
               <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
               <RouteSignup setLanding={this.setLanding} path="/users/create"/>
               <RouteProfile currentUser={this.state.currentUser} path="/user"/>
               <RouteCategory path="/nav/id"/>
+              
+              {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
+              <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} default />
             </Router>
         </div>
 
@@ -76,7 +91,7 @@ class App extends React.Component{
                 (<Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>)
                 : null
               }
-              <i className="far fa-heart"></i>
+              <Link to="/favourites" ><i className="far fa-heart"></i></Link>
               <Link to="/user"><i className="fas fa-user-circle"></i></Link>
             </footer>
           ) :null
