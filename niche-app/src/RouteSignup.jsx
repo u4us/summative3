@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
 import {addUser} from './API';
-import {navigate} from '@reach/router';
+import {navigate, Link} from '@reach/router';
 
 
 class RouteSignup extends Component {
+
+  constructor(props){
+		super(props);
+		this.state = {
+			message:''
+    }
+        
+    this.props.setLanding(true)
+  }
+
   handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -32,10 +42,6 @@ class RouteSignup extends Component {
       <div class="main landing-form">
         <h2>Register</h2>
         <form onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
-          {/* <div className="form-group">
-            <label htmlFor="name-input">Name</label>
-            <input type="text" className="form-control" name="name-input" id="name-input" placeholder="Enter name"/>
-          </div> */}
           <div className="form-group">
             <label htmlFor="name-input">Username</label>
             <input type="text" className="form-control" name="username-input" id="username-input"/>
@@ -51,7 +57,11 @@ class RouteSignup extends Component {
             <input type="email" className="form-control" name="email-input" id="email-input"/>
           </div>
 
-          <button type="submit" className="btn btn-primary">Register</button>
+          <div className="button-group">
+              <p>{this.state.message}</p>
+              <button type="submit" className="btn btn-primary">Register</button>
+              <Link className="back" to="/">back</Link>
+          </div> 
         </form>
       </div>
     );

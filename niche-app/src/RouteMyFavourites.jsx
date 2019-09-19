@@ -28,7 +28,7 @@ class RouteMyFavourites extends React.Component{
         var {currentUser} = this.props
         return(
             <div className="main dashboard">
-                <p className="dash-title">MY FAVOURITES</p>
+                <p className="dash-title">YOUR FAVOURITES</p>
                 <div className="dash-items">
                     
                     {
