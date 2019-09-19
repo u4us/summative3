@@ -32,11 +32,11 @@ class RouteMyFavourites extends React.Component{
                 <div className="dash-items">
                     
                     {
-                        currentUser.favourites.map((product) => {
+                        this.state.products.map((product) => {
                             
                             var productProps = {
-                                // ...product,
-                                // key: product.id
+                                ...product,
+                                key: product.id
                             };
 
                             return(

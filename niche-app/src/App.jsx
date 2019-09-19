@@ -37,6 +37,7 @@ class App extends React.Component{
   loadCurrentUserById = (id) => {
     getSingleUser(id).then(res => this.setState({currentUser:res.data}))
   }
+
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
   }
