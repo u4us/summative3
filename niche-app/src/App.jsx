@@ -37,6 +37,7 @@ class App extends React.Component{
   loadCurrentUserById = (id) => {
     getSingleUser(id).then(res => this.setState({currentUser:res.data}))
   }
+
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
   }
@@ -83,11 +84,9 @@ class App extends React.Component{
             <footer>
               <Link to="/products"><i className="fas fa-home"></i></Link>
               <i className="fas fa-search"></i>
-              {
-                currentUser.username !== 'guest' || '' ?
-                (<Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>)
-                : null
-              }
+             
+                <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
+                
               <Link to="/favourites" ><i className="far fa-heart"></i></Link>
               <Link to="/user"><i className="fas fa-user-circle"></i></Link>
             </footer>
