@@ -97,14 +97,20 @@ class RouteProductDetails extends React.Component{
 
                 <div className="details-content">
                     <div className="icons">
-                        <i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
+                        {
+                            currentUser.username !== 'guest' && currentUser !== '' ? 
+                            (<i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
+                            ) : null
+                        }
                         {
                             product.user_id == currentUser.id
                             ?(
+                                <>
                                 <div className="edit">
                                     <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
                                     <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
                                 </div>
+                                </>
                             ):null
                         }
                         

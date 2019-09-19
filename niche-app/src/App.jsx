@@ -22,7 +22,7 @@ class App extends React.Component{
     this.state = {
       products: [],
       types: [],
-      currentUser: '',
+      currentUser: null,
       isLanding: true
     }
   }
