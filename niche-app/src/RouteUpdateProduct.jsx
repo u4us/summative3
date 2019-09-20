@@ -60,10 +60,10 @@ class RouteUpdateProduct extends React.Component {
                     <div classNameName="form-group">
                         <label htmlFor="category-input">category</label>
                         <select className="category-input" name="category-input" id="category-input">
-                            <option value="1">category</option>
-                            <option value="2">category</option>
-                            <option value="3">category</option>
-                            <option value="4">category</option>
+                            <option value="1">Shoes</option>
+                            <option value="2">Pants</option>
+                            <option value="3">Shirts</option>
+                            <option value="4">Jackets</option>
                         </select>
                     </div>
         

@@ -11,9 +11,9 @@ import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
 import RouteProfile from './RouteProfile.jsx';
 import RouteCategory from './RouteCategory.jsx';
+import RouteMyFavourites from './RouteMyFavourites.jsx';
 
 import './App.scss';
-import RouteMyFavourites from './RouteMyFavourites.jsx';
 import { getSingleUser } from './API.js';
 
 class App extends React.Component{
@@ -56,7 +56,7 @@ class App extends React.Component{
           (isLanding == false) ? ( 
             <header>
               <div className="box"/>
-              <img className="logo" src="/newlogo.png" />
+              {/* <img className="logo" src="/newlogo.png" /> */}
               <Link to="/nav"><i className="fas fa-bars"></i></Link>
           </header>
           ) :null

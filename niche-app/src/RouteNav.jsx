@@ -44,7 +44,7 @@ class RouteNav extends React.Component{
                         })
                     }
                     {
-                        localStorage.getItem('userId')!== null ? (
+                        localStorage.getItem('userId')!== null && currentUser !== 'guest' ? (
                             <>
                             <div className="sell-item">                    
                                 <div className="sell">sell an item</div>
@@ -58,16 +58,6 @@ class RouteNav extends React.Component{
                                 <Link className="button" to="/login">login</Link> 
                             </div>
                     }
-                    
-
-                    {/* //////potential logout code
-                    
-                        {
-                            (localStorage.getItem('userId')!== null) 
-                            ?
-                            <i className="fas fa-sign-out-alt" onClick={this.handleLogoutClick}></i>
-                            : <></>
-                        } */}
                               
                 </div>
             </div>
