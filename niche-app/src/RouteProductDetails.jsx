@@ -82,17 +82,18 @@ class RouteProductDetails extends React.Component{
         var {currentUser} = this.props
         return(
             <div className="main details">
-                <Link className="back-arrow" to="/products"><i className="fas fa-arrow-left"></i></Link>
+                <Link className="back-arrow" to="/products"><i class="fas fa-chevron-left"></i></Link>
+
+                <div className="image-container">
+                    <img className="item-image" src={serverURL+product.photo} alt=""/>
+                </div>
+
                 <div className="user">
                     <img className="avatar" src="/avatar.jpg" alt="avatar"/>
                     <div className="user-info">
                         <div className="username">{product.user ? product.user.username : 'username'}</div>
                         <div className="location">mount eden, auckland</div>    
                     </div>                
-                </div>
-
-                <div className="image-container">
-                    <img className="item-image" src={serverURL+product.photo} alt=""/>
                 </div>
 
                 <div className="details-content">

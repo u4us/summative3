@@ -23,37 +23,38 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background: rgb(83,83,83);
+    background: linear-gradient(135deg, rgba(83,83,83,1) 0%, rgba(18,18,18,1) 40%);
 }
 
 .main{
     flex: 1 1 auto;
     overflow-y: auto;
-    background-color: $dark1;
 }
 
 /* header|footer styling */
 
 header{
-    background-color: $dark1;
+    background-color: transparent;
     color: white;
+    flex: 0 0 3rem; 
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 1.5rem;
-    flex: 0 0 3rem;
-
-    .logo{
-            height: 3rem;
-    }
-    
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: thin $dark3 solid;
 
     .box{
-        width: 1rem;
         height: 1rem;
+        width: 1rem
+    }
+
+    .logo{
+        height: 3rem;
     }
 
     i{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: white;
     }
 }
@@ -66,7 +67,7 @@ footer{
     align-items: center;
     flex: 0 0 3.5rem;
     padding: 0 1rem;
-    border-top: thin $dark3 solid;
+    // border-top: thin black solid;
 
     i{
         font-size: 1.1rem;
@@ -74,7 +75,7 @@ footer{
     }
 
     .plus{
-        font-size: 1.9rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -85,6 +86,7 @@ footer{
     font-size: 1.1rem;
     margin: 0.7rem 1rem;
     color: white;
+    margin-top: 1.5rem;
 }
 
 .dash-items{
@@ -121,20 +123,22 @@ footer{
 
 /* item details page */
 .details{
+    color: white;
 
     .back-arrow{
         position: fixed;
         top: 0;
         left: 0;
         color: white;
-        padding: 0.7rem 1.5rem;
-        font-size: 1.2rem;
+        padding: 0.8rem 1rem;
+        font-size: 1.1rem;
     }
 
     .user{
         display: flex;
         align-items: center;
         padding: 0.5rem 1rem;
+        background-color: $dark1;
 
         .avatar{
             width: 2rem;
@@ -253,13 +257,14 @@ footer{
 
 .buy-container{
     box-sizing: border-box;
-    border-top: 1px #ccc solid;
-    background-color: white;
+    border-top: 1px $dark3 solid;
+    border-bottom: 1px black solid;
+    background-color: $dark2;
     position: fixed;
     width: 100vw;
     height: 3.5rem;
     left: 0;
-    top: calc(100vh - 6.5rem);
+    top: calc(100vh - 7rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
