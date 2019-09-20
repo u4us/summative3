@@ -380,13 +380,33 @@ footer{
 }
 
 /* nav page */
+.nav-container.open{
+   transform: translateX(0);
+}
 
 .nav-container{
     padding: 3rem;
+    position: fixed;
+    top: calc(0);
+    left: 0;
+    width: 100%;
+    height: calc(100% - 6.5rem);
+    background-color: $dark1;
+    transform: translateX(100%);
+    z-index: 30;
+    transition: transform 0.3s ease-out;
+
+    i{
+        color: white;
+        // position: fixed;
+        // top: 0;
+        // left: 0;
+        // padding: 1.5rem;
+    }
 
     .nav-link{
         text-decoration: none;
-        color: black;
+        color: white;
         font-weight: 500;
     }
 
@@ -410,12 +430,12 @@ footer{
     }
 
     .log-button{
-        color: $primary-color;
+        color: white;
         padding: 1rem;
         text-decoration: none;
 
         .button{
-            color: $primary-color;
+            color: white;
             text-decoration: none;
             font-weight: 500;
         }

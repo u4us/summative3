@@ -5,7 +5,7 @@ import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
 import RouteUpdateProduct from './RouteUpdateProduct.jsx';
-import RouteNav from './RouteNav.jsx';
+import Nav from './Nav.jsx';
 import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
@@ -23,7 +23,8 @@ class App extends React.Component{
       products: [],
       types: [],
       currentUser: null,
-      isLanding: true
+      isLanding: true,
+      navOpen: false
     }
   }
 
@@ -46,6 +47,16 @@ class App extends React.Component{
     this.setState({isLanding:status})
   }
 
+  handleNavOpenClick = () => {
+    this.setState((prevState) => {
+      return {navOpen: !prevState.navOpen}
+    })
+  }
+
+  handleNavCloseClick = () => {
+    this.setState({navOpen: false})
+  }
+
   render(){
     var {isLanding, currentUser} = this.state
 
@@ -54,17 +65,20 @@ class App extends React.Component{
       <div className="app">
         {
           (isLanding == false) ? ( 
+            <>
             <header>
-              <div className="box"/>
+              <div className="box" />
               <img className="logo" src="/newlogo.png" />
-              <Link to="/nav"><i className="fas fa-bars"></i></Link>
+              <i className="fas fa-bars" onClick={this.handleNavOpenClick}></i>
             </header>
+            <Nav currentUser={this.state.currentUser} show={this.state.navOpen} handleNavCloseClick={this.handleNavCloseClick} />
+            </>
           ) :null
         }
         <div className="main">
+
             <Router>
               <RouteDashboard setLanding={this.setLanding} path="/products"/>
-              <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
               <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
@@ -75,7 +89,6 @@ class App extends React.Component{
               <RouteCategory path="/nav/:id"/>
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
-              <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} default />
             </Router>
         </div>
 

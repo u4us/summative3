@@ -4,7 +4,7 @@ import {Router, Link, navigate} from '@reach/router';
 import {getCategories} from './API';
 
 
-class RouteNav extends React.Component{
+class Nav extends React.Component{
     constructor(props){
         super(props)
 
@@ -12,8 +12,6 @@ class RouteNav extends React.Component{
             categories:[
             ]
         }
-
-        this.props.setLanding(false)
     }
 
     componentDidMount(){
@@ -32,9 +30,13 @@ class RouteNav extends React.Component{
     render(){
         var {categories} = this.state
         var {currentUser} = this.props
+        var navClasses = 'nav-container'
+        if(this.props.show){
+            navClasses = ['nav-container open']
+        }
         return(
-            <div className="main nav">
-                <div className="nav-container">
+                <div className={navClasses}>
+                    <i class="fas fa-chevron-left" onClick={this.props.handleNavCloseClick}></i>
                     
                     {
                         categories.map(category=>{
@@ -60,9 +62,8 @@ class RouteNav extends React.Component{
                     }
                               
                 </div>
-            </div>
         );
     }
 }
 
-export default RouteNav;
+export default Nav;
