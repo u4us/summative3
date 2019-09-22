@@ -27,7 +27,7 @@ class RouteDashboard extends React.Component{
     render(){
         return(
             <div className="main dashboard">
-                <p className="dash-title">Newest Listings</p>
+                <p className="dash-title">Latest Listings</p>
                 <div className="dash-items">
                     
                     {

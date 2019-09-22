@@ -1,11 +1,13 @@
 import React from 'react';
 import {Router, Link, Redirect, navigate} from '@reach/router';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
+
+import Nav from './Nav.jsx';
+
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
+import RouteSearch from './RouteSearch.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
 import RouteUpdateProduct from './RouteUpdateProduct.jsx';
-import Nav from './Nav.jsx';
 import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
@@ -78,17 +80,18 @@ class App extends React.Component{
         <div className="main">
 
             <Router>
-              <RouteDashboard setLanding={this.setLanding} path="/products"/>
-              <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
-              <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
-              <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
-              <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
-              <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
-              <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create"/>
-              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/user"/>
-              <RouteCategory path="/nav/:id"/>
+              <RouteLanding setCurrentUser={this.setCurrentUser} path="/" />
+              <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login" />
+              <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create" />
+              <RouteDashboard setLanding={this.setLanding} path="/products" />
+              <RouteSearch setLanding={this.setLanding} path="/search" />
+              <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create" />
+              <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id" />
+              <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit" />
+              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/user" />
+              <RouteCategory path="/nav/:id" />
               
-              {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
+              {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites" /> : null}
             </Router>
         </div>
 
@@ -96,7 +99,7 @@ class App extends React.Component{
           (isLanding == false) ? ( 
             <footer>
               <Link to="/products"><i className="fas fa-home"></i></Link>
-              <i className="fas fa-search"></i>
+              <Link to="/search"><i className="fas fa-search"></i></Link>
               <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
               <Link to="/favourites" ><i className="far fa-heart"></i></Link>
               <Link to="/user"><i className="fas fa-user-circle"></i></Link>

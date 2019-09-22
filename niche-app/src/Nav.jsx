@@ -57,7 +57,7 @@ class Nav extends React.Component{
                             </div>
                             </>
                         ) : <div className="log-button">
-                                <Link className="button" to="/login">login</Link> 
+                                <Link className="button" to="/login">Log In</Link> 
                             </div>
                     }
                               
