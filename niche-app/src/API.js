@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// var urlPrefix = 'http://10.2.24.31:3001/api';
+// var urlPrefix = 'http://10.2.24.56:3001/api';
 var urlPrefix = 'http://localhost:3001/api';
-// var serverURL = 'http://10.2.24.31:3001/';
+// var serverURL = 'http://10.2.24.56:3001/';
 var serverURL = 'http://localhost:3001/';
 
 // product
@@ -37,6 +37,10 @@ var getCategory = (id) => {
 
 var addFavourite = (userId,data) => {
     return axios.post(urlPrefix+'/users/'+userId+'/favourites', data)
+}
+
+var removeFavourite = (userId,productId) => {
+    return axios.delete(urlPrefix+'/users/'+userId+'/favourites/'+productId)
 }
 
 // comment
@@ -94,5 +98,6 @@ export {
     uploadFile,
 
     serverURL,
-    addFavourite
+    addFavourite,
+    removeFavourite
 }

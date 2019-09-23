@@ -30,13 +30,11 @@ class App extends React.Component{
   componentDidMount(){
     var userId = localStorage.getItem('userId')
     if(userId){
-      this.loadCurrentUserById(userId)
+      getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
     }
   }
 
-  loadCurrentUserById = (id) => {
-    getSingleUser(id).then(res => this.setState({currentUser:res.data}))
-  }
+
 
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
@@ -66,7 +64,7 @@ class App extends React.Component{
               <RouteDashboard setLanding={this.setLanding} path="/products"/>
               <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
-              <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
+              <RouteProductDetails setCurrentUser={this.setCurrentUser}  currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
               <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
               <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
