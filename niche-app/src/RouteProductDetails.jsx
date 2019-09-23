@@ -80,7 +80,7 @@ class RouteProductDetails extends React.Component{
     render(){
         var {product} = this.state;
         var {currentUser} = this.props
-        return(
+        return (
             <div className="main details">
                 <Link className="back-arrow" to="/products"><i className="fas fa-arrow-left"></i></Link>
                 <div className="user">
