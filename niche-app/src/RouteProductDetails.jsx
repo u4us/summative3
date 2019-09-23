@@ -98,7 +98,7 @@ class RouteProductDetails extends React.Component{
                 <div className="details-content">
                     <div className="icons">
                         {
-                            currentUser.username !== 'guest' && currentUser !== '' ? 
+                            currentUser && currentUser.username !== 'guest'? 
                             (<i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
                             ) : null
                         }
