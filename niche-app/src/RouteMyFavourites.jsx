@@ -7,10 +7,6 @@ class RouteMyFavourites extends React.Component{
 
     constructor(props){
         super(props);
-        // this.state = {
-        //     products: []
-        // }
-
         this.props.setLanding(false)
     }
 
@@ -28,10 +24,11 @@ class RouteMyFavourites extends React.Component{
         var {currentUser} = this.props
         return(
             <div className="main dashboard">
-                <p className="dash-title">YOUR FAVOURITES</p>
+                <p className="dash-title">MY FAVOURITES</p>
                 <div className="dash-items">
                     
                     {
+                        currentUser.favourites !== undefined ?
                         currentUser.favourites.map((product) => {
                             
                             var productProps = {
@@ -47,6 +44,7 @@ class RouteMyFavourites extends React.Component{
                                 </Link>
                             )
                         })
+                        :null
                     }
                     <div className="empty"></div>
   
