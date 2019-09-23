@@ -79,6 +79,7 @@ class App extends React.Component{
         <div className="main">
 
             <Router>
+<<<<<<< HEAD
               <RouteLanding setCurrentUser={this.setCurrentUser} path="/" />
               <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login" />
               <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create" />
@@ -88,6 +89,18 @@ class App extends React.Component{
               <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id" />
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit" />
               <RouteCategory path="/product/:id" />
+=======
+              <RouteDashboard setLanding={this.setLanding} path="/products"/>
+              <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
+              <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
+              <RouteProductDetails setCurrentUser={this.setCurrentUser}  currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
+              <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
+              <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
+              <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
+              <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create"/>
+              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/user"/>
+              <RouteCategory path="/nav/:id"/>
+>>>>>>> master
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites" /> : null}
             </Router>
