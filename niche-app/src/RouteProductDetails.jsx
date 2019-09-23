@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import {Link, navigate} from '@reach/router';
-import {getProduct, serverURL, deleteProduct, addComment,addFavourite} from './API';
+import {getProduct, serverURL, deleteProduct, addComment,addFavourite,removeFavourite} from './API';
 
 
 class RouteProductDetails extends React.Component{
@@ -30,9 +30,21 @@ class RouteProductDetails extends React.Component{
 
     handleFavouriteClick = () => {
        
-        var {id,currentUser,loadCurrentUserById} = this.props;
+        
+        var {id,currentUser,setCurrentUser} = this.props;
         addFavourite(currentUser.id,{productid:id}).then(res => {
-            loadCurrentUserById(currentUser.id)
+            var user = res.data
+            setCurrentUser(user)
+            navigate('/favourites')
+        })
+    }
+
+    handleRemoveFavouriteClick = () => {
+       
+        var {id,currentUser,setCurrentUser} = this.props;
+        removeFavourite(currentUser.id,id).then(res => {
+            var user = res.data
+            setCurrentUser(user)
             navigate('/favourites')
         })
     }
@@ -79,8 +91,13 @@ class RouteProductDetails extends React.Component{
 
     render(){
         var {product} = this.state;
-        var {currentUser} = this.props
-        return(
+        var {currentUser,id} = this.props
+
+        console.log(currentUser)
+        console.log(id)
+
+        id = parseInt(id)
+        return product ? (
             <div className="main details">
                 <Link className="back-arrow" to="/products"><i className="fas fa-arrow-left"></i></Link>
                 <div className="user">
@@ -98,11 +115,13 @@ class RouteProductDetails extends React.Component{
                 <div className="details-content">
                     <div className="icons">
                         {
-                            currentUser && currentUser.username !== 'guest'? 
-                            (<i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
-                            ) : null
+                            
+                            (currentUser && currentUser.savedProducts.includes(id)) ? 
+                            <i className="fas fa-heart like" onClick={this.handleRemoveFavouriteClick}></i>
+                             :  <i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
+                            
                         }
-                        {
+                        {/* {
                             product.user_id == currentUser.id
                             ?(
                                 <>
@@ -112,7 +131,7 @@ class RouteProductDetails extends React.Component{
                                 </div>
                                 </>
                             ):null
-                        }
+                        } */}
                         
                     </div>
                     <div className="name">{product.name}</div>   
@@ -143,7 +162,7 @@ class RouteProductDetails extends React.Component{
                     <div className="buy-now">Buy</div>
                 </div>          
             </div>
-        );
+        ) : null
     }
 }
 
