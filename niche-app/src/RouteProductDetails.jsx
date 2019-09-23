@@ -85,7 +85,7 @@ class RouteProductDetails extends React.Component{
                 <Link className="back-arrow" to="/products"><i class="fas fa-chevron-left"></i></Link>
 
                 <div className="image-container">
-                    <img className="item-image" src={serverURL+product.photo} alt=""/>
+                    <img className="item-image" src={serverURL+product.photo} alt="item"/>
                 </div>
 
                 <div className="user">

@@ -3,15 +3,14 @@ import {Router, Link, Redirect, navigate} from '@reach/router';
 
 import Nav from './Nav.jsx';
 
+import RouteLanding from './RouteLanding.jsx';
+import RouteLogin from './RouteLogin.jsx';
+import RouteSignup from './RouteSignup.jsx';
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteSearch from './RouteSearch.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
 import RouteUpdateProduct from './RouteUpdateProduct.jsx';
-import RouteLanding from './RouteLanding.jsx';
-import RouteLogin from './RouteLogin.jsx';
-import RouteSignup from './RouteSignup.jsx';
-import RouteProfile from './RouteProfile.jsx';
 import RouteCategory from './RouteCategory.jsx';
 import RouteMyFavourites from './RouteMyFavourites.jsx';
 
@@ -70,7 +69,7 @@ class App extends React.Component{
             <>
             <header>
               <div className="box" />
-              <img className="logo" src="/newlogo.png" />
+              <img className="logo" src="/logo_dark.png" />
               <i className="fas fa-bars" onClick={this.handleNavOpenClick}></i>
             </header>
             <Nav currentUser={this.state.currentUser} show={this.state.navOpen} handleNavCloseClick={this.handleNavCloseClick} />
@@ -88,8 +87,7 @@ class App extends React.Component{
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create" />
               <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id" />
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit" />
-              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/user" />
-              <RouteCategory path="/nav/:id" />
+              <RouteCategory path="/product/:id" />
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites" /> : null}
             </Router>

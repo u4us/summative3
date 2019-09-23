@@ -49,48 +49,41 @@ class RouteSearch extends React.Component{
         return(
             <div className="main search">
                 <div className="search-header">
-                    <p className="search-title">Search</p>
+                    <p className="search-title">SEARCH</p>
                     <div className="form-group">
-                        <i class="fas fa-search"></i>
-                        <input className="search-input" type="text" placeholder="Search.."/>     
+                        <input className="search-input" type="text" placeholder="What are you looking for?"/>  
+                        <i class="fas fa-search"></i>   
                     </div>
-
-                    <div className="categories">
-                        {
-                            categories.map(category=>{
-                                return(
-                                    <p className="category">{category.name}</p>      
-                                )
-                            })
-                        }
-                    </div>
-
                     
                        
                 </div>
                 
-                <div className="dash-items">
-                    
-                    {
-                        this.state.products.map((product) => {
-                            
-                            // var productProps = {
-                            //     ...product,
-                            //     key: product.id
-                            // };
+                <div className="search-results">
+                    <p>Recently Listed</p>
+                    <div className="search-items">
+                        
+                        {
+                            this.state.products.map((product) => {
+                                
+                                // var productProps = {
+                                //     ...product,
+                                //     key: product.id
+                                // };
 
-                            return(
-                                <Link to={'/products/'+product.id}>
-                                    <div className="dash-item">
-                                        <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
-                                    </div>  
-                                </Link>
-                            )
-                        })
-                    }
-                    <div className="empty"></div>
-  
-                </div>        
+                                return(
+                                    <Link to={'/products/'+product.id}>
+                                        <div className="search-item">
+                                            <img className="search-image" src={serverURL+product.photo} alt="product-image"/>
+                                        </div>  
+                                    </Link>
+                                )
+                            })
+                        }
+                        <div className="empty"></div>
+    
+                    </div>  
+                </div>
+                      
             </div>
         );
     }

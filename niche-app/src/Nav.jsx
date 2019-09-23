@@ -36,7 +36,7 @@ class Nav extends React.Component{
         }
         return(
                 <div className={navClasses}>
-                    <i class="fas fa-chevron-left" onClick={this.props.handleNavCloseClick}></i>
+                    <i class="fas fa-times" onClick={this.props.handleNavCloseClick}></i>
                     
                     {
                         categories.map(category=>{
@@ -57,7 +57,7 @@ class Nav extends React.Component{
                             </div>
                             </>
                         ) : <div className="log-button">
-                                <Link className="button" to="/login">Log In</Link> 
+                                <Link className="button" to="/login">LOG IN</Link> 
                             </div>
                     }
                               
