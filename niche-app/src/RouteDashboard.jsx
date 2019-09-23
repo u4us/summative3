@@ -2,7 +2,6 @@ import React from 'react';
 import {getProducts, serverURL, getCategories} from './API';
 import {Link} from '@reach/router';
 import './App.scss';
-import RouteCategory from './RouteCategory';
 
 class RouteDashboard extends React.Component{
 
