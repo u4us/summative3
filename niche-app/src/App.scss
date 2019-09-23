@@ -88,13 +88,13 @@ footer{
     justify-content: space-between;
 
     .dash-item{
-        max-width: 32vw;
-        max-height: 32vw;
+        max-width: 33vw;
+        max-height: 33vw;
         overflow: hidden;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.1rem;
 
         img{
-            height: 32vw;
+            height: 33vw;
         }
 
         .dash-image{
@@ -108,8 +108,8 @@ footer{
 
     .empty{
         display: block;
-        height: 32vw;
-        width: 32vw;
+        height: 33vw;
+        width: 33vw;
 	}
 }
 
