@@ -33,13 +33,11 @@ class App extends React.Component{
   componentDidMount(){
     var userId = localStorage.getItem('userId')
     if(userId){
-      this.loadCurrentUserById(userId)
+      getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
     }
   }
 
-  loadCurrentUserById = (id) => {
-    getSingleUser(id).then(res => this.setState({currentUser:res.data}))
-  }
+
 
   setCurrentUser = (user) => {
     this.setState({currentUser:user})

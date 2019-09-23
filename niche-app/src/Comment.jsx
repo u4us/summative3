@@ -8,6 +8,8 @@ class Comment extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            editComment: false,
+            editCommentInput: props.comment.description,
         }
     }
 
@@ -18,7 +20,30 @@ class Comment extends React.Component{
         deleteComment(commentId).then(res => refreshData())
     }
 
-    handleCommentEdit = (e) => {}
+    handleEditClick = () => {
+        this.setState(
+            {
+                editComment: true,
+            }
+        );
+    }
+
+    handleEditBlur = () =>{
+        this.setState(
+            {
+                editComment: false,
+            }
+        );
+
+    }
+
+    handleEditInputChange=(e)=>{
+        this.setState(
+            {
+                editCommentInput: e.target.value
+            }
+        );
+    }
 
     handleCommentEditSubmit = (e) =>{
         e.preventDefault();
@@ -41,15 +66,22 @@ class Comment extends React.Component{
             <div className="comment">  
                 <div className="comment-details">
                     <div className="comment-user">{comment.user? comment.user.username: 'anon'}</div>
-                    <div className="posted-comment">{comment.description}</div>    
+                     
+                    <form onSubmit={this.handleCommentEditSubmit} ref={(el) => {this.form = el}}>
+                    {
+                        this.state.editComment ?(
+                            <input type="text" name="comment-description-input" id="comment-description-input" autoFocus onBlur={this.handleEditBlur} value={this.state.editCommentInput} onChange={this.handleEditInputChange}/>
+                        ) :(
+                            <div className="posted-comment">{comment.description}</div>  
+                        )
+                    }
+                    {/* <button type="submit"><i class="fas fa-check"></i></button> */}
+                </form> 
                 </div>
         
-                <form onSubmit={this.handleCommentEditSubmit} ref={(el) => {this.form = el}}>
-                    <input type="text" name="comment-description-input" id="comment-description-input"/>
-                    {/* <button type="submit"><i class="fas fa-check"></i></button> */}
-                </form>
+                
 
-                <div className="comment-edit" onClick={this.handleCommentEdit}>edit</div>
+                <div className="comment-edit" onClick={this.handleEditClick}>edit</div>
 
                 <div data-commentid={comment.id} className="comment-edit" onClick={this.handleCommentDelete}>delete</div> 
                 
