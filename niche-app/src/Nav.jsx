@@ -14,13 +14,6 @@ class Nav extends React.Component{
         }
     }
 
-    componentDidMount(){
-        console.log('Nav route mounted')
-        getCategories().then(res => {
-            this.setState({categories:res.data})
-        })
-    }
-
     handleLogoutClick = () => {
         localStorage.removeItem('userId')
         this.props.setCurrentUser(null)
@@ -28,7 +21,6 @@ class Nav extends React.Component{
     }
 
     render(){
-        var {categories} = this.state
         var {currentUser} = this.props
         var navClasses = 'nav-container'
         if(this.props.show){
@@ -37,23 +29,21 @@ class Nav extends React.Component{
         return(
                 <div className={navClasses}>
                     <i class="fas fa-times" onClick={this.props.handleNavCloseClick}></i>
-                    
-                    {
-                        categories.map(category=>{
-                            return (
-                                <Link className="nav-link" to={'/nav/'+category.id}><div className="category">{category.name}</div></Link>
-                            )
-                        })
-                    }
+
+                    <div className="links">
+                        <p className="nav-link">Browse All</p>
+                        <p className="nav-link">Search</p>
+                        <p className="nav-link">My Listings</p>
+                        <p className="nav-link bag">My Cart</p>       
+                        <p className="nav-link">About</p>
+                        <p className="nav-link">Help</p>    
+                    </div>
+                                      
                     {
                         localStorage.getItem('userId')!== null && currentUser !== 'guest' ? (
                             <>
-                            <div className="sell-item">                    
-                                <div className="sell">sell an item</div>
-                                <Link to="/products/create"><i className="fas fa-plus"></i></Link>
-                            </div>
                             <div className="log-button">
-                                <Link className="button" to="/" onClick={this.handleLogoutClick}>logout</Link> 
+                                <Link className="button" to="/" onClick={this.handleLogoutClick}>LOG OUT</Link> 
                             </div>
                             </>
                         ) : <div className="log-button">

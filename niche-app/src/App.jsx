@@ -2,6 +2,7 @@ import React from 'react';
 import {Router, Link, Redirect, navigate} from '@reach/router';
 
 import Nav from './Nav.jsx';
+import Backdrop from './Backdrop.jsx';
 
 import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
@@ -73,6 +74,7 @@ class App extends React.Component{
               <i className="fas fa-bars" onClick={this.handleNavOpenClick}></i>
             </header>
             <Nav currentUser={this.state.currentUser} show={this.state.navOpen} handleNavCloseClick={this.handleNavCloseClick} />
+            <Backdrop show={this.state.navOpen} />
             </>
           ) :null
         }
