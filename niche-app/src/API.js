@@ -65,6 +65,10 @@ var getSingleUser = (id) => {
     return axios.get(urlPrefix+'/users/'+id)
 }
 
+var updateUser = (id, data) => {
+    return axios.put(urlPrefix+'/users/'+id, data)
+}
+
 //authenticate
 var  authenticate = (data) => {
     return axios.post(urlPrefix+'/authenticate',data)          

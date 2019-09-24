@@ -1,8 +1,10 @@
 import React from 'react';
+import {getSingleUser} from './API.js';
 import {Router, Link, Redirect, navigate} from '@reach/router';
 
 import Nav from './Nav.jsx';
 import Backdrop from './Backdrop.jsx';
+import UpdateProfile from './UpdateProfile.jsx';
 
 import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
@@ -15,9 +17,9 @@ import RouteUpdateProduct from './RouteUpdateProduct.jsx';
 import RouteCategory from './RouteCategory.jsx';
 import RouteProfile from './RouteProfile.jsx';
 import RouteMyFavourites from './RouteMyFavourites.jsx';
+import RouteOops from './RouteOops.jsx';
 
 import './App.scss';
-import { getSingleUser } from './API.js';
 
 class App extends React.Component{
   constructor(props){
@@ -27,7 +29,7 @@ class App extends React.Component{
       types: [],
       currentUser: null,
       isLanding: true,
-      navOpen: false
+      navOpen: false,
     }
   }
 
@@ -70,7 +72,11 @@ class App extends React.Component{
             <header>
               <div className="box" />
               <img className="logo" src="/logo_dark.png" />
-              <i className="fas fa-bars" onClick={this.handleNavOpenClick}></i>
+              <div className="bars" onClick={this.handleNavOpenClick}>
+                <div className="bar" />
+                <div className="bar" />
+                <div className="bar" />
+              </div>
             </header>
             <Nav currentUser={this.state.currentUser} show={this.state.navOpen} handleNavCloseClick={this.handleNavCloseClick} />
             <Backdrop show={this.state.navOpen} />
@@ -78,6 +84,7 @@ class App extends React.Component{
           ) :null
         }
         <div className="main">
+          {/* <UpdateProfile currentUser={this.state.currentUser}/> */}
 
             <Router>
               <RouteLanding setCurrentUser={this.setCurrentUser} path="/" />
@@ -88,10 +95,10 @@ class App extends React.Component{
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create" />
               <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id" />
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit" />
-              <RouteCategory path="/product/:id" />
-              <RouteProfile path="/user" />
-              
-              {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites" /> : null}
+              <RouteCategory setLanding={this.setLanding} path="/product/:id" />
+              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id" />  
+              <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites" />
+              <RouteOops setLanding={this.setLanding} path="/oops"></RouteOops>
             </Router>
         </div>
 
@@ -100,9 +107,18 @@ class App extends React.Component{
             <footer>
               <Link to="/products"><i className="fas fa-home"></i></Link>
               <Link to="/search"><i className="fas fa-search"></i></Link>
-              <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
+              {
+                (currentUser && currentUser.username !== 'guest') ?
+                <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>  
+                : <Link to="/oops"><i className="far fa-plus-square plus"></i></Link>
+              }             
               <Link to="/favourites" ><i className="far fa-heart"></i></Link>
-              <Link to="/user"><i className="fas fa-user-circle"></i></Link>
+              {
+                (currentUser && currentUser.username !== 'guest') ?
+                <Link to={'/users/'+currentUser.id}><i className="fas fa-user-circle"></i></Link>
+                : <Link to="/oops"><i className="fas fa-user-circle"></i></Link>
+              }
+              
             </footer>
           ) :null
         }

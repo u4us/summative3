@@ -43,12 +43,12 @@ class RouteUpdateProduct extends React.Component {
             <div className="main update">
                 <form className="form" onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div className="form-group">
-                        <label htmlFor="name-input">what are you selling?</label>
+                        <label htmlFor="name-input">What are you selling?</label>
                         <input type="text" name="name-input" id="name-input" defaultValue={name}/>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="description-input">description</label>
-                        <input type="text" name="description-input" id="description-input" defaultValue={description}/>
+                        <label htmlFor="description-input">Description</label>
+                        <input type="text" name="description-input" id="description-input"/>
                     </div>
                     <div className="form-group price">
                         <label htmlFor="price">Price:</label>
@@ -57,8 +57,8 @@ class RouteUpdateProduct extends React.Component {
                             <input type="text" name="price-input" id="price-input" defaultValue={price}/>    
                         </div>                       
                     </div>
-                    <div classNameName="form-group">
-                        <label htmlFor="category-input">category</label>
+                    <div className="form-group price">
+                        <label htmlFor="category-input">Category:</label>
                         <select className="category-input" name="category-input" id="category-input">
                             <option value="1">Shoes</option>
                             <option value="2">Pants</option>

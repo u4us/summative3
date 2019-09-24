@@ -2,10 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap');
 
 $primary-color: #F16266;
-$dark1: #121212;
-$dark2: #212121;
-$dark3: #535353;
-$light: #b3b3b3;
+$grey: #212121;
 
 *{
     margin:0;
@@ -41,7 +38,6 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    // border-bottom: thin $dark3 solid;
 
     .box{
         height: 1rem;
@@ -52,9 +48,15 @@ header{
         height: 3rem;
     }
 
-    i{
-        font-size: 1rem;
-        color: #212121;
+    .bars{
+        width: 1.3rem;
+        height: 1.5rem;
+        
+        .bar{
+            height: 2px;
+            background-color: $grey;
+            margin: 4px 0;
+        }
     }
 }
 
@@ -68,7 +70,7 @@ footer{
 
     i{
         font-size: 1.1rem;
-        color: #212121;
+        color: $grey;
     }
 
     .plus{
@@ -241,6 +243,7 @@ footer{
          width: 8rem;
          margin: auto;
          margin-top: 3rem;
+         font-size: 0.9rem;
  
          .button{
              color: $primary-color;
@@ -282,7 +285,7 @@ footer{
     .browse-container{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-evenly;
 
         .cat-link{
             text-decoration: none;
@@ -290,17 +293,18 @@ footer{
         }
     
         .dash-category{
-            width: 40vw;
+            width: 45vw;
             margin-bottom: 2rem;
+            position: relative;
         
             .image{
-                max-width: 40vw;
-                max-height: 55vw;
+                max-width: 45vw;
+                max-height: 58vw;
                 overflow: hidden;
             }
         
             img{
-                width: 55vw;
+                width: 45vw;
             }
         
             img[class]{
@@ -312,10 +316,74 @@ footer{
             }
         
             .category-name{
-                font-weight: 600;
-                text-align: center;
-                background-color: white;
-                padding: 0.5rem;
+                position: absolute;
+                top: 75%;
+                right: 0;
+                margin-right: 1rem;
+                font-weight: 700;
+                font-size: 0.9rem;
+                background-color: white;;
+                padding: 0.6rem 1rem;
+                // padding-right: 2rem;
+                display: flex;
+                
+                .plus{
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+}
+
+/* single category */
+.category{
+    background-color: white;
+    min-height: 100vh;
+
+    .back{
+        color: $grey;
+        position: fixed;
+        top: 0;
+        padding: 1.2rem 1rem;
+    }
+
+    .title{
+        color: $grey;
+        margin: 1.5rem;
+    }
+
+    .cat-items{
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .cat-item{
+            width: 40vw;
+            height: 55vw;
+            overflow: hidden;
+
+            img{
+                height: 55vw;
+            }
+    
+            .cat-image{
+                object-fit: cover;
+            }
+    
+            img[class]{
+                width: 100%;
+            }
+        }
+    }
+
+    .text{
+        margin-bottom: 1rem;
+        .likes{
+            display: flex;
+            color: #535353;
+            
+            p{
                 text-decoration: none;
             }
         }
@@ -324,13 +392,13 @@ footer{
 
 /* item details page */
 .details{
-    color: white;
+    background-color: white;
 
     .back-arrow{
         position: fixed;
         top: 0;
         left: 0;
-        color: white;
+        color: $grey;
         padding: 0.8rem 1rem;
         font-size: 1.1rem;
     }
@@ -338,8 +406,13 @@ footer{
     .user{
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0.5rem 1rem;
-        background-color: $dark1;
+
+        .user-icon{
+            display: flex;
+            align-items: center;
+        }
 
         .avatar{
             width: 2rem;
@@ -351,6 +424,7 @@ footer{
         .username{
             font-size: 0.8rem;
             font-weight: 700;
+            color: $grey
         }
 
         .location{
@@ -358,6 +432,18 @@ footer{
             font-weight: 500;
             color: grey;
         } 
+
+        .icons{
+            color: $primary-color;
+            display: flex;
+            justify-content: space-between;
+    
+            .edit i{
+                margin-left: 1.5rem;
+                font-size: 1.1rem;
+                color: $primary-color;
+            }
+        }
     }  
     
     .image-container{
@@ -371,47 +457,70 @@ footer{
 }
 
 .details-content{
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem;
     padding-bottom: 4rem;
 
-    .icons{
-        color: $primary-color;
+    .product-name{
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        .like{
+        .name{
+            margin: 1rem 0;
             font-size: 1.3rem;
+            font-weight: 700;
+            color: $grey;
+            margin-bottom: 0.5rem;
         }
 
-        .edit i{
-            margin-left: 1.5rem;
-            font-size: 1.1rem;
+        .like{
             color: $primary-color;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
         }
-    }
+    }  
 
-    .name{
-        margin: 1rem 0;
-        font-size: 1.2rem;
-        font-weight: 600;
+    .price{
+        font-weight: 500;
+        color: $grey;
+        margin-bottom: 1.5rem;
     }
 
     .description{
         font-size: 0.9rem;
-        border-bottom: 1px #ccc solid;
         padding-bottom: 1.5rem;
+        color: $grey;
+
+        .title{
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    .buy{
+        border: 2px $primary-color solid;
+        border-radius: 25px;
+        color: $primary-color;
+        text-align: center;
+        padding: 0.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 1rem;
     }
 
     .comments{
         padding: 1rem;
         font-size: 0.9rem;
+        border-top: 1px #ccc solid;
+        margin-top: 2.5rem;
 
         .comment{
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0.5rem 0;
+            color: $grey;
 
             .comment-details{
                 display: flex;
@@ -432,57 +541,40 @@ footer{
         .comment-user{
             font-weight: 700;
             margin-right: 0.5rem;
+            color: $grey;
+        }
+
+        .comment-buttons{
+            display: flex;
+
+            .comment-edit{
+                margin-left: 0.5rem;
+            }
         }
     }
-}
 
-.comment-form{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1.5rem;
-
-    button{
-        font-size: 1.2rem;
-    }
-
-    .comment-input{
-        font-size: 0.9rem;
-        font-family: 'Montserrat';
-    }
-
-    .comment-input:focus{
-        outline: none;
-    }
-}
-
-.buy-container{
-    box-sizing: border-box;
-    border-top: 1px black solid;
-    border-bottom: 1px black solid;
-    background-color: $dark2;
-    position: fixed;
-    width: 100vw;
-    height: 3.5rem;
-    left: 0;
-    top: calc(100vh - 6.5rem);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
-
-    .price{
-        font-size: 1.2rem;
-        font-weight: 600;
-    }
-
-    .buy-now{
-        background-color: $primary-color;
+    .comment-form{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+        border: 1px #ccc solid;
         border-radius: 25px;
-        font-size: 0.9rem;
-        font-weight: 700;
-        padding: 0.4rem 0.8rem;
-        color: white;
+        padding: 0.5rem 1rem;
+    
+        button{
+            font-size: 1.2rem;
+            color: grey;
+        }
+    
+        .comment-input{
+            font-size: 0.9rem;
+            font-family: 'Montserrat';
+        }
+    
+        .comment-input:focus{
+            outline: none;
+        }
     }
 }
 
@@ -490,18 +582,26 @@ footer{
 
 .add-product{
     padding: 2rem;
+    background-color: white;
 }
 
 /* update page */
 
 .update{
     padding: 2rem;
+    background-color: white;
 }
 
 /* add/update form */
 .form{
     .form-group{
         margin-bottom: 2rem;
+
+        label{
+            font-weight: 600;
+            color: $grey;
+            display: block;
+        }
 
         input[type=file]{
             background-color: #f8f8f8;
@@ -516,28 +616,28 @@ footer{
         input{
             width: 100%;
             border: none;
-            border-bottom: 1px $primary-color solid;
+            border: 1px #ccc solid;
             font-size: 1rem;
             padding: 0.5rem;
-            color: $primary-color;
+            color: $grey;
+            margin-top: 0.5rem;
         }
 
-        input:focus{
+        textarea{
+            border: 1px #ccc solid;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+            width: 100%;
+            color: $grey;
+        }
+
+        textarea:focus{
             outline: none;
         }
 
-        .category-input{
-            width: 100%;
-            margin-top: 0.5rem;
-            border: none;
-            border-bottom: 1px $primary-color solid;
-            border-radius: 0;
-            font-size: 1rem;
-            padding: 0.5rem;
-            color: $primary-color;
-        }
-        
-        .category-input:focus{
+        input:focus{
             outline: none;
         }
     }
@@ -559,23 +659,42 @@ footer{
                 color: black;
                 width: 4rem;
                 padding: 0.3rem;
+                margin-top: 0;
+                width: 100%;
             }
         }
     }
 
+    select{
+        border: 1px #ccc solid;
+        background: white;
+        border-radius: 0;
+        margin-left: 0.5rem;
+        height: 2rem;
+        font-size: 1rem;
+        width: 100%;
+        padding-left: 0.5rem;
+    }
+
+    select:focus{
+        outline: none;
+    }
+
     .button{
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
     
         button{
-            background-color: $primary-color;
-            border: none;
-            font-size: 1.2rem;
+            border: 2px $primary-color solid;
+            background-color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
             font-weight: 700;
-            color: white;
-            padding: 0.3rem 0.7rem;
+            color: $primary-color;
+            padding: 0.5rem 1.5rem;
             border-radius: 25px;
-            margin-top: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
         }
     }
 }
@@ -587,14 +706,14 @@ footer{
     background-color: white;
 
     .search-title{
-        color: #212121;
+        color: $grey;
         text-align: center;
         font-weight: 600;
         font-size: 1.2rem;
     }
     
     .form-group{
-        border: 1px #212121 solid;
+        border: 1px $grey solid;
         background-color: white;
         padding: 0.5rem 0.8rem;
         margin-top: 1rem;
@@ -609,6 +728,7 @@ footer{
             background-color: transparent;
             border: none;
             color: #535353;
+            width: 100%;
         }
     
         .search-input:focus{
@@ -626,7 +746,7 @@ footer{
         font-weight: 700;
         font-size: 1.2rem;
         text-align: center;
-        color: #212121;
+        color: $grey;
         padding: 1rem;
     }
 
@@ -665,15 +785,29 @@ footer{
 
 /* user profile */
 .profile{
+    background-color: white;
+    height: 100vh;
+    color: $grey;
+
+    .back{
+        text-decoration: none;
+        color: $grey;
+        position: fixed;
+        top: 0;
+        padding: 1.2rem 1rem;
+        
+    }
+
     .avatar{
-        width: 6rem;
-        height: 6rem;
+        width: 7rem;
+        height: 7rem;
         overflow: hidden;
         border-radius: 50%;
         margin: auto;
+        margin-top: 2rem;
 
         img{
-            height: 6rem;
+            height: 7rem;
         }
 
         .avatar-image{
@@ -689,5 +823,187 @@ footer{
         text-align: center;
         margin-top: 0.8rem;
         font-size: 1.5rem;
+    }
+
+    .location{
+        margin: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: grey;
+        text-align: center;
+    }
+
+    .bio{
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: $grey;
+        margin: 0 0.5rem;
+    }
+
+    .settings{
+        border: 2px $primary-color solid;
+        display: block;
+        width: 6.5rem;
+        color: $primary-color;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        padding: 0.4rem;
+        border-radius: 25px;
+        font-weight: 800;
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+    .products-title{
+        text-align: center;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+.user-items{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-between;
+
+    .user-item{
+        max-width: 32vw;
+        max-height: 32vw;
+        overflow: hidden;
+        margin-bottom: 0.3rem;
+
+        img{
+            height: 32vw;
+        }
+
+        .user-image{
+            object-fit: cover;
+        }
+
+        img[class]{
+            width: 100%;
+        }
+    }
+
+    .empty{
+        display: block;
+        height: 32vw;
+        width: 32vw;
+    }
+}
+
+/* update user profile */
+
+.update-backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .update-profile{
+        background-color: white;
+        width: 80%;
+        height: 75%;
+        padding: 2rem;
+    
+        .title{
+            text-align: center;
+            font-weight: 600;
+            color: $grey;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .profile-form{
+
+        .form-group{
+            margin-bottom: 2rem;
+        }
+
+        label{
+            font-weight: 600;
+            color: grey;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        input{
+            border: none;
+            border-bottom: 1px $grey solid;
+            width: 100%;
+            font-size: 1rem;
+            color: $grey;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+        .button{
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+
+            button{
+                border: 2px $primary-color solid;
+                border-radius: 25px;
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                color: $primary-color;
+                font-weight: 800;
+                background-color: white;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    }
+}
+
+/* oops page */
+.oops{
+    background-color: white;
+    height: calc(100vh - 6rem);
+    color: $grey;
+    text-align: center;
+    padding-top: 10rem;
+
+    .title{
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .description{
+        font-weight: 500;
+    }
+
+    .login-link{
+        text-decoration: none;
+    }
+
+    .direct-button{
+        border: 2px $primary-color solid;
+        width: 9rem;
+        border-radius: 25px;
+        padding: 0.5rem;
+        color: $primary-color;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin: auto;
+        margin-top: 2rem;
     }
 }

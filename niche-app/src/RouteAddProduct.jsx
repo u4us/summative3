@@ -43,7 +43,7 @@ class RouteAddProduct extends React.Component{
         
         return(
             <div className="main add-product">
-                <form className ="form" onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>
+                <form className ="form" id="add-form" onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>
                 <div className="form-group">
                         <label htmlFor="photo-input">Upload a photo</label>
                         <input type="file" name="photo-input" id="photo-input"/>
@@ -63,8 +63,8 @@ class RouteAddProduct extends React.Component{
                             <input type="text" name="price-input" id="price-input"/>    
                         </div>                       
                     </div>
-                    <div classNameName="form-group">
-                        <label htmlFor="category-input">Category</label>
+                    <div className="form-group price">
+                        <label htmlFor="category-input">Category:</label>
                         <select className="category-input" name="category-input" id="category-input">
                             <option value="1">Shoes</option>
                             <option value="2">Pants</option>

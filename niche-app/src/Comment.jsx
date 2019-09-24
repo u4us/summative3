@@ -80,10 +80,12 @@ class Comment extends React.Component{
                 </div>
         
                 
+                <div className="comment-buttons">
+                    <div className="comment-edit" onClick={this.handleEditClick}>edit</div>
 
-                <div className="comment-edit" onClick={this.handleEditClick}>edit</div>
-
-                <div data-commentid={comment.id} className="comment-edit" onClick={this.handleCommentDelete}>delete</div> 
+                    <div data-commentid={comment.id} className="comment-edit" onClick={this.handleCommentDelete}>delete</div>     
+                </div>
+                
                 
             </div>
             </>

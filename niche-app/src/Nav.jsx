@@ -33,7 +33,7 @@ class Nav extends React.Component{
                     <div className="links">
                         <p className="nav-link">Browse All</p>
                         <p className="nav-link">Search</p>
-                        <p className="nav-link">My Listings</p>
+                        <p className="nav-link">My Profile</p>
                         <p className="nav-link bag">My Cart</p>       
                         <p className="nav-link">About</p>
                         <p className="nav-link">Help</p>    

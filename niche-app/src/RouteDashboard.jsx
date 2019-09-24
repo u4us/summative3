@@ -35,28 +35,15 @@ class RouteDashboard extends React.Component{
             <div className="main dashboard">
                 <p className="dash-title">BROWSE</p>
                 <div className="browse-container">
-
-                    {/* {
-                        categories.map(category=>{
-                            return (
-                                <Link to={'/product/'+category.id}>
-                                    <div className="dash-category">
-                                        <div className="image">
-                                            <img className="category-image" src="top.jpg" alt="tops"/>    
-                                        </div>
-                                        <p className="category-name">{category.name}</p>
-                                    </div>
-                                </Link>
-                            )
-                        })
-                    } */}
-
                     <Link className="cat-link" to={'/product/'+'3'}>
                         <div className="dash-category">
                             <div className="image">
                                 <img className="category-image" src="top.jpg" alt="tops"/>    
                             </div>
-                            <p className="category-name">TOPS</p>
+                            <div className="category-name">
+                                <p className="name">TOPS</p>
+                                <p className="plus">+</p>    
+                            </div>                           
                         </div>
                     </Link>
                     <Link className="cat-link" to={'/product/'+'1'}>
@@ -64,7 +51,10 @@ class RouteDashboard extends React.Component{
                             <div className="image">
                                 <img className="category-image" src="shoe.jpg" alt="tops"/>    
                             </div>
-                            <p className="category-name">SHOES</p>
+                            <div className="category-name">
+                                <p className="name">SHOES</p>
+                                <p className="plus">+</p>    
+                            </div> 
                         </div>
                     </Link>
                     <Link className="cat-link" to={'/product/'+'2'}>
@@ -72,7 +62,10 @@ class RouteDashboard extends React.Component{
                             <div className="image">
                                 <img className="category-image" src="pants.jpg" alt="tops"/>    
                             </div>
-                            <p className="category-name">PANTS</p>
+                            <div className="category-name">
+                                <p className="name">PANTS</p>
+                                <p className="plus">+</p>    
+                            </div> 
                         </div>
                     </Link>
                     <Link className="cat-link" to={'/product/'+'4'}>
@@ -80,7 +73,10 @@ class RouteDashboard extends React.Component{
                             <div className="image">
                                 <img className="category-image" src="jacket.jpg" alt="tops"/>    
                             </div>
-                            <p className="category-name">JACKETS</p>
+                            <div className="category-name">
+                                <p className="name">JACKETS</p>
+                                <p className="plus">+</p>    
+                            </div> 
                         </div>
                     </Link>     
                 </div>

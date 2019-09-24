@@ -11,8 +11,6 @@ class RouteProductDetails extends React.Component{
             product: {
                 comments: []
             },
-            //tentative until user roles implemented
-            // currentUser: '',
         }
 
         this.props.setLanding(false)
@@ -47,35 +45,15 @@ class RouteProductDetails extends React.Component{
             setCurrentUser(user)
             navigate('/favourites')
         })
-    }
-
-    //reload bug needs fixing
-    
+    }  
 
     handleCommentSubmit =(e) =>{
         e.preventDefault();
 
         var formData = new FormData(this.commentForm);
         var productId = this.props.id;
-        //tentative until user roles implemented
-        // if(this.props.currentUser!==null){
-        //     var data = {
-        //         description:formData.get('comment-input'),
-        //         // rating:formData.get('rating-input'),
-        //         product_id: productId,
-        //         user_id: this.props.currentUser.id
-        //     }
-        // } else {
-        //     var data = {
-        //         description:formData.get('comment-input'),
-        //         // rating:formData.get('rating-input'),
-        //         product_id: productId,
-        //         // user_id: this.props.currentUser.id
-        //     }
-        // }
         var data = {
             description:formData.get('comment-input'),
-            // rating:formData.get('rating-input'),
             product_id: productId,
             user_id: this.props.currentUser.id
         }
@@ -93,50 +71,69 @@ class RouteProductDetails extends React.Component{
         var {product} = this.state;
         var {currentUser,id} = this.props
 
-        console.log(currentUser)
-        console.log(id)
-
         id = parseInt(id)
         return product ? (
             <div className="main details">
                 <Link className="back-arrow" to="/products"><i class="fas fa-chevron-left"></i></Link>
 
-                <div className="image-container">
-                    <img className="item-image" src={serverURL+product.photo} alt="item"/>
-                </div>
-
                 <div className="user">
-                    <img className="avatar" src="/avatar.jpg" alt="avatar"/>
-                    <div className="user-info">
-                        <div className="username">{product.user ? product.user.username : 'username'}</div>
-                        <div className="location">mount eden, auckland</div>    
+                    <div className="user-icon">
+                        <img className="avatar" src="/avatar.jpg" alt="avatar"/>
+                        <div className="user-info">
+                            <div className="username">{product.user ? product.user.username : 'username'}</div>
+                            <div className="location">mount eden, auckland</div>    
+                        </div>    
                     </div>                
-                </div>
 
-                <div className="details-content">
                     <div className="icons">
                         {
-                            
-                            (currentUser && currentUser.savedProducts.includes(id)) ? 
-                            <i className="fas fa-heart like" onClick={this.handleRemoveFavouriteClick}></i>
-                             :  <i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
-                            
-                        }
-                        {/* {
-                            product.user_id == currentUser.id
-                            ?(
+                            currentUser && product.user_id == currentUser.id
+                            ? (
                                 <>
                                 <div className="edit">
                                     <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
                                     <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
                                 </div>
                                 </>
-                            ):null
-                        } */}
+                            ) : null
+                        }
                         
+                    </div>                
+                </div>
+
+                <div className="image-container">
+                    <img className="item-image" src={serverURL+product.photo} alt="item"/>
+                </div>
+
+                <div className="details-content">
+                    <div className="product-name">
+                        <div className="name">{product.name}</div>
+                        {/* {
+                            currentUser && currentUser.username !== 'guest' ? <>
+                            {                               
+                                (currentUser && currentUser.savedProducts.includes(id)) ? 
+                                <i className="fas fa-heart like" onClick={this.handleRemoveFavouriteClick}></i>
+                                :  <i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
+                                
+                            }
+                            </> : null
+                        } */}
+
+                         
+
                     </div>
-                    <div className="name">{product.name}</div>   
-                    <div className="description">{product.description}</div> 
+                    
+                    <div className="price">${product.price}</div>   
+                    <div className="description">
+                        <div className="title">Description:</div>
+                        <div className="desc">{product.description}</div>
+                    </div>
+                    
+                    {
+                      currentUser && product.user_id !== currentUser.id ? <div className="buy">Buy Now</div> : null
+                    }
+                    
+
                     <div className="comments">
                         {
                             product.comments.map(comment => {
@@ -149,19 +146,13 @@ class RouteProductDetails extends React.Component{
                                 }
                                 return <Comment {...commentProps} />
                             })
-                        }
-                        <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}} className="comment-form">
+                        }                       
+                    </div>
+                    <form onSubmit={this.handleCommentSubmit} ref={(el)=>{this.commentForm = el}} className="comment-form">
                             <input className="comment-input" name="comment-input" id="comment-input" type="text" placeholder="leave a comment"/>
                             <button type="submit"><i className="far fa-comment"></i></button>
                         </form>
-                        
-                    </div>
                 </div>     
-                
-                <div className="buy-container">
-                    <div className="price">${product.price}</div>
-                    <div className="buy-now">Buy</div>
-                </div>          
             </div>
         ) : null
     }
