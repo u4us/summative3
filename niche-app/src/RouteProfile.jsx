@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
-import {getProducts,serverURL} from './API';
+import {getProducts,getSingleUser,serverURL} from './API';
 import RouteSignup from './RouteSignup';
+import {Link, navigate} from '@reach/router';
 
 class RouteProfile extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            user:null,
             products: []
         }
 
         this.props.setLanding(false)
     }
+
+    componentDidMount(){
+        var {id} = this.props
+        getSingleUser(id).then(res => this.setState({user:res.data}))
+    }
+
     render() {
-        var {product} = this.state;
-        var {currentUser} = this.props;
+        var {user,product} = this.state;
+        var {id} = this.props;
         
-        return (
+        return user ? (
             <div className="main profile">
 
                     <div className="user-profile">
@@ -25,15 +33,13 @@ class RouteProfile extends Component {
                             <div className="change-pic"><i class="fas fa-pen"></i></div>
                         </div>
                         <div className="user-info">
-                            <div className="username">User Name</div>
-                            <div className="location">City road, Auckland</div>
-                            <div className="name">Name:<span>ishah lewis</span></div>    
-                            <div className="email">Email:<span>ishahlewis@gmail.com</span></div>
-                            <div className="description">Bio:<span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, praesentium.</span></div>
+                            <div className="username">{user.username}</div>
+                            <div className="name">Name:<span>{user.username}</span></div>    
+                            <div className="email">Email:<span>{user.email}</span></div>
+                            <div className="description">Bio:<span>Tell us something about yourself...</span></div>
                         </div>        
                         <div className="edit-details">
-                            <p>Edit my profile</p>
-                            {/* <i class="far fa-edit"></i> */}
+                            <Link to={'/users/'+id+'/edit'}>Edit my profile</Link>
                         </div>        
                     </div>
 
@@ -48,17 +54,23 @@ class RouteProfile extends Component {
 
                             <div className="empty"></div>
 
-                            {/* link users posts in order for them to show up on profile page - this will be read / review
-                                bio - create a bio 
-                                edit details in place - update
-                                delete - find something to delete on this page
+                            {/* TO DO:
+                                Edit in place the name, email and bio
+
+                                attach user name
+
+                                delete posts from your page
+
+                                somehow hook up your posts to the posts on the page
+
+
                                  */}
             
                         </div>       
                     </div>
 
             </div>
-        )
+        ) : null
     }
 }
 

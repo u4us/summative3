@@ -39,6 +39,10 @@ var addFavourite = (userId,data) => {
     return axios.post(urlPrefix+'/users/'+userId+'/favourites', data)
 }
 
+var removeFavourite = (userId,productId) => {
+    return axios.delete(urlPrefix+'/users/'+userId+'/favourites/'+productId)
+}
+
 // comment
 var addComment = (data) => {
     return axios.post(urlPrefix+'/comments', data)
@@ -59,6 +63,10 @@ var addUser = (data) => {
 
 var getSingleUser = (id) => {
     return axios.get(urlPrefix+'/users/'+id)
+}
+
+var updateUser = (id, data) => {
+    return axios.put(urlPrefix+'/users/'+id, data)
 }
 
 //authenticate
@@ -89,10 +97,12 @@ export {
 
     addUser,
     getSingleUser,
+    updateUser,
     
     authenticate,
     uploadFile,
 
     serverURL,
-    addFavourite
+    addFavourite,
+    removeFavourite
 }

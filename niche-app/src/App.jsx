@@ -10,6 +10,7 @@ import RouteLanding from './RouteLanding.jsx';
 import RouteLogin from './RouteLogin.jsx';
 import RouteSignup from './RouteSignup.jsx';
 import RouteProfile from './RouteProfile.jsx';
+import RouteUpdateProfile from './RouteUpdateProfile.jsx';
 import RouteCategory from './RouteCategory.jsx';
 
 import './App.scss';
@@ -30,13 +31,11 @@ class App extends React.Component{
   componentDidMount(){
     var userId = localStorage.getItem('userId')
     if(userId){
-      this.loadCurrentUserById(userId)
+      getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
     }
   }
 
-  loadCurrentUserById = (id) => {
-    getSingleUser(id).then(res => this.setState({currentUser:res.data}))
-  }
+
 
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
@@ -66,12 +65,15 @@ class App extends React.Component{
               <RouteDashboard setLanding={this.setLanding} path="/products"/>
               <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} path="/nav"/>
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create"/>
-              <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
+              <RouteProductDetails setCurrentUser={this.setCurrentUser}  currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id"/>
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit"/>
               <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
               <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
               <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create"/>
-              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/user"/>
+
+              <RouteUpdateProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id/edit"/>
+              <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id"/>
+              
               <RouteCategory path="/nav/:id"/>
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
@@ -86,7 +88,7 @@ class App extends React.Component{
               <i className="fas fa-search"></i>
               <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
               <Link to="/favourites" ><i className="far fa-heart"></i></Link>
-              <Link to="/user"><i className="fas fa-user-circle"></i></Link>
+              {currentUser? <Link to={'/users/'+currentUser.id}><i className="fas fa-user-circle"></i></Link> : null}
             </footer>
           ) :null
         }
