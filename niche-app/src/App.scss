@@ -582,9 +582,9 @@ footer{
                 margin-bottom: 1em;
             }
 
-            .name, .email, .description{
+            .name, .email, .bio{
                 font-size: .8em;
-                margin-top: .2em;
+                margin-top: .5em;
                 span{
                     color: grey;
                     margin-left: .5em;
@@ -597,18 +597,59 @@ footer{
             flex: 1 0 90%;
             margin-bottom: 1em;
             border-bottom: 1px solid #ccc;
+            display: flex;
 
-            p{
-                border: 1px solid #F16266;
+            .link{
+                text-decoration: none;
+                background-color: $primary-color;
                 text-align: center;
                 padding: .5em;
                 border-radius:25px;
                 font-size: .8em;
-
-                &:hover{
-                    background-color: #F16266;
-                    color: white;
+                color: white;
+                flex: 1 0 90%;
+                font-weight: bold;
+    
+                &:focus-within{
+                    background-color:white ;
+                    color:#F16266;
                 }
+            }
+
+        }
+    }
+}
+
+// update profile
+
+.update-profile{
+    
+    .form-group{
+        
+        input{
+            color: grey;
+        }
+    }
+
+    .update-button{
+        background-color: $primary-color;
+        text-align: center;
+        padding: .5em;
+        border-radius:25px;
+        font-size: .8em;
+        color: white;
+        font-weight: bold;
+
+        button{
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            background-color: transparent;
+            border: none;
+            width: 100%;
+
+            &:focus-within{
+                outline: none;
             }
         }
     }

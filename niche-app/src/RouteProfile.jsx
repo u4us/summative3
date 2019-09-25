@@ -9,7 +9,7 @@ class RouteProfile extends Component {
         super(props);
         this.state = {
             user:null,
-            products: []
+        
         }
 
         this.props.setLanding(false)
@@ -21,7 +21,7 @@ class RouteProfile extends Component {
     }
 
     render() {
-        var {user,product} = this.state;
+        var {user} = this.state;
         var {id} = this.props;
         
         return user ? (
@@ -30,16 +30,18 @@ class RouteProfile extends Component {
                     <div className="user-profile">
                         <div className="profile-pic">
                             <img className="avatar-user" src="/avatar.jpg" alt="avatar"/>
-                            <div className="change-pic"><i class="fas fa-pen"></i></div>
+                            <div className="change-pic" ><i class="fas fa-pen"></i></div>
+                            {/* <input type="file" name="photo-input" id="photo-input"/> */}
+                            {/* potential to do add file for profile */}
                         </div>
                         <div className="user-info">
                             <div className="username">{user.username}</div>
                             <div className="name">Name:<span>{user.username}</span></div>    
                             <div className="email">Email:<span>{user.email}</span></div>
-                            <div className="description">Bio:<span>{user.bio}</span></div>
+                            <div className="bio">Bio:<span>{user.bio}</span></div>
                         </div>        
                         <div className="edit-details">
-                            <Link to={'/users/'+id+'/edit'}>Edit my profile</Link>
+                            <Link className="link" to={'/users/'+id+'/edit'}>Edit my profile</Link>
                         </div>        
                     </div>
 
@@ -47,17 +49,29 @@ class RouteProfile extends Component {
                         <div className="main dashboard">
  
                             <div className="dash-items">
-                                <div className="dash-item">
-                                    <img className="dash-image" src='rose.jpg' alt="product-image"/>
-                                </div>  
+                                {
+                                    user.products.map(product=>{
+
+                                        return (
+
+                                        <Link to={'/products/'+product.id}>
+                                        <div className="dash-item">
+                                            <img className="dash-image" src={serverURL+ product.photo} alt="product-image"/>
+                                        </div> 
+                                        </Link>
+
+                                        )
+                                    })
+                                } 
+
+                                <div className="empty"></div>  
+
                             </div>
 
-                            <div className="empty"></div>
+                      
 
                             {/* TO DO:
                                 Edit in place the name, email and bio
-
-                                attach user name
 
                                 delete posts from your page
 

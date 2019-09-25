@@ -26,7 +26,8 @@ class RouteUpdateProfile extends React.Component {
         var data = {
             username: formData.get('username'),
             email: formData.get('email'),
-            bio: formData.get('bio'),        }
+            bio: formData.get('bio'),
+        }
 
         // var {id} = this.props;
         updateUser(id,data).then(res => navigate('/users/'+id))
@@ -34,25 +35,25 @@ class RouteUpdateProfile extends React.Component {
 
     render(){
 
-        var {currentUser} = this.props
-        return currentUser ? (
-            <div className="main update">
+        var {user} = this.state
+        return user ? (
+            <div className="main update update-profile">
                 <form className="form" onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username" defaultValue={currentUser.username}/>
+                        <input type="text" name="username" id="username" defaultValue={user.username}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" id="email" defaultValue={currentUser.email} />
+                        <input type="text" name="email" id="email" defaultValue={user.email} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="bio">Bio</label>   
-                        <input type="text" name="bio" id="bio" defaultValue={currentUser.bio}/>               
+                        <input type="text" name="bio" id="bio" defaultValue={user.bio}/>               
                     </div>
                     
         
-                    <div className="button">
+                    <div className="update-button">
                         <button type="submit">Update</button>    
                     </div>             
                 </form>
