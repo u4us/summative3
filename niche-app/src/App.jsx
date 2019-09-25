@@ -17,6 +17,7 @@ import RouteUpdateProduct from './RouteUpdateProduct.jsx';
 import RouteCategory from './RouteCategory.jsx';
 import RouteProfile from './RouteProfile.jsx';
 import RouteMyFavourites from './RouteMyFavourites.jsx';
+import RouteCart from './RouteCart.jsx';
 import RouteOops from './RouteOops.jsx';
 
 import './App.scss';
@@ -78,7 +79,7 @@ class App extends React.Component{
                 <div className="bar" />
               </div>
             </header>
-            <Nav currentUser={this.state.currentUser} show={this.state.navOpen} handleNavCloseClick={this.handleNavCloseClick} />
+            <Nav currentUser={this.state.currentUser} show={this.state.navOpen} handleNavCloseClick={this.handleNavCloseClick}  />
             <Backdrop show={this.state.navOpen} />
             </>
           ) :null
@@ -93,11 +94,12 @@ class App extends React.Component{
               <RouteDashboard setLanding={this.setLanding} path="/products" />
               <RouteSearch setLanding={this.setLanding} path="/search" />
               <RouteAddProduct currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/create" />
-              <RouteProductDetails loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id" />
+              <RouteProductDetails setCurrentUser={this.setCurrentUser} loadCurrentUserById={this.loadCurrentUserById} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/products/:id" />
               <RouteUpdateProduct setLanding={this.setLanding} path="/products/:id/edit" />
               <RouteCategory setLanding={this.setLanding} path="/product/:id" />
               <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id" />  
               <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites" />
+              <RouteCart setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id/cart" />
               <RouteOops setLanding={this.setLanding} path="/oops"></RouteOops>
             </Router>
         </div>
@@ -111,8 +113,12 @@ class App extends React.Component{
                 (currentUser && currentUser.username !== 'guest') ?
                 <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>  
                 : <Link to="/oops"><i className="far fa-plus-square plus"></i></Link>
+              }
+              {
+                (currentUser && currentUser.username !== 'guest') ?
+                <Link to="/favourites" ><i className="far fa-heart"></i></Link>  
+                : <Link to="/oops"><i className="far fa-heart"></i></Link>
               }             
-              <Link to="/favourites" ><i className="far fa-heart"></i></Link>
               {
                 (currentUser && currentUser.username !== 'guest') ?
                 <Link to={'/users/'+currentUser.id}><i className="fas fa-user-circle"></i></Link>

@@ -32,9 +32,16 @@ class Nav extends React.Component{
 
                     <div className="links">
                         <p className="nav-link">Browse All</p>
-                        <p className="nav-link">Search</p>
-                        <p className="nav-link">My Profile</p>
-                        <p className="nav-link bag">My Cart</p>       
+                        <Link to="/search" className="nav-link" onClick={this.props.handleNavOpenClick}><p>Search</p></Link>
+                        {
+                            currentUser && currentUser.username !== 'guest' ? (
+                                <>
+                                <Link to={'/users/'+currentUser.id} className="nav-link" onClick={this.props.handleNavCloseClick}><p>My Profile</p></Link>
+                                <Link to={'/users/'+currentUser.id+'/cart'} className="nav-link" onClick={this.props.handleNavCloseClick}><p>My Cart</p></Link>  
+                                </>      
+                            ) : null
+                        }
+                             
                         <p className="nav-link">About</p>
                         <p className="nav-link">Help</p>    
                     </div>

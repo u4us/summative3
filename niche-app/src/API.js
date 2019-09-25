@@ -35,12 +35,22 @@ var getCategory = (id) => {
     return axios.get(urlPrefix+'/categories/'+id)
 }
 
+//favourites
 var addFavourite = (userId,data) => {
     return axios.post(urlPrefix+'/users/'+userId+'/favourites', data)
 }
 
 var removeFavourite = (userId,productId) => {
     return axios.delete(urlPrefix+'/users/'+userId+'/favourites/'+productId)
+}
+
+//cart
+var addToCart = (userId,data) => {
+    return axios.post(urlPrefix+'/users/'+userId+'/cart', data)
+}
+
+var removeFromCart = (userId,productId) => {
+    return axios.delete(urlPrefix+'/users/'+userId+'/cart/'+productId)
 }
 
 // comment
@@ -91,17 +101,22 @@ export {
     getCategories,
     getCategory,
 
+    addFavourite,
+    removeFavourite,
+
+    addToCart,
+    removeFromCart,
+
     addComment,
     updateComment,
     deleteComment,
 
     addUser,
     getSingleUser,
+    updateUser,
     
     authenticate,
     uploadFile,
 
     serverURL,
-    addFavourite,
-    removeFavourite
 }

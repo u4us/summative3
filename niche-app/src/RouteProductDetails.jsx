@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import {Link, navigate} from '@reach/router';
-import {getProduct, serverURL, deleteProduct, addComment,addFavourite,removeFavourite} from './API';
+import {getProduct, serverURL, deleteProduct, addComment, addFavourite, removeFavourite, addToCart} from './API';
 
 
 class RouteProductDetails extends React.Component{
@@ -11,6 +11,7 @@ class RouteProductDetails extends React.Component{
             product: {
                 comments: []
             },
+            favCount: 0
         }
 
         this.props.setLanding(false)
@@ -26,14 +27,18 @@ class RouteProductDetails extends React.Component{
         deleteProduct(id).then(res => navigate('/products'))
     }
 
-    handleFavouriteClick = () => {
-       
-        
+    incrementFavCount = () => {
+        var newFavCount = this.state.favCount + 1;
+        this.setState({favCount: newFavCount})
+    }
+
+    handleFavouriteClick = () => { 
+        this.incrementFavCount();           
         var {id,currentUser,setCurrentUser} = this.props;
         addFavourite(currentUser.id,{productid:id}).then(res => {
             var user = res.data
             setCurrentUser(user)
-            navigate('/favourites')
+            // navigate('/favourites')
         })
     }
 
@@ -43,9 +48,18 @@ class RouteProductDetails extends React.Component{
         removeFavourite(currentUser.id,id).then(res => {
             var user = res.data
             setCurrentUser(user)
-            navigate('/favourites')
+            // navigate('/favourites')
         })
-    }  
+    }
+    
+    handleAddCartClick = () => {            
+        var {id,currentUser,setCurrentUser} = this.props;
+        addToCart(currentUser.id,{productid:id}).then(res => {
+            var user = res.data
+            setCurrentUser(user)
+            navigate('/users/'+currentUser.id+'/cart')
+        })
+    }
 
     handleCommentSubmit =(e) =>{
         e.preventDefault();
@@ -76,30 +90,6 @@ class RouteProductDetails extends React.Component{
             <div className="main details">
                 <Link className="back-arrow" to="/products"><i class="fas fa-chevron-left"></i></Link>
 
-                <div className="user">
-                    <div className="user-icon">
-                        <img className="avatar" src="/avatar.jpg" alt="avatar"/>
-                        <div className="user-info">
-                            <div className="username">{product.user ? product.user.username : 'username'}</div>
-                            <div className="location">mount eden, auckland</div>    
-                        </div>    
-                    </div>                
-
-                    <div className="icons">
-                        {
-                            currentUser && product.user_id == currentUser.id
-                            ? (
-                                <>
-                                <div className="edit">
-                                    <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
-                                    <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
-                                </div>
-                                </>
-                            ) : null
-                        }
-                        
-                    </div>                
-                </div>
 
                 <div className="image-container">
                     <img className="item-image" src={serverURL+product.photo} alt="item"/>
@@ -108,7 +98,7 @@ class RouteProductDetails extends React.Component{
                 <div className="details-content">
                     <div className="product-name">
                         <div className="name">{product.name}</div>
-                        {/* {
+                        {
                             currentUser && currentUser.username !== 'guest' ? <>
                             {                               
                                 (currentUser && currentUser.savedProducts.includes(id)) ? 
@@ -117,12 +107,36 @@ class RouteProductDetails extends React.Component{
                                 
                             }
                             </> : null
-                        } */}
-
-                         
-
+                        }
                     </div>
                     
+                    <div className="user">
+                    <div className="user-icon">
+                        <div className="user-info">
+                            <div className="by">seller:</div>
+                            <div className="details">
+                                <div className="username">{product.user ? product.user.username : 'username'}</div>
+                                
+                                <div className="location">{product.user ? product.user.location : 'location'}<i class="fas fa-map-marker-alt"></i></div>
+                            </div>
+                               
+                        </div>    
+                    </div>                
+
+                    <div className="icons">
+                        {
+                            currentUser && product.user_id == currentUser.id ? (
+                                    <>
+                                    <div className="edit">
+                                        <Link to={'/products/'+product.id+'/edit'}><i className="fas fa-edit"></i></Link>
+                                        <i className="fas fa-trash-alt" onClick={this.handleTrashClick}></i>
+                                    </div>
+                                    </>
+                                ) : null
+                            }
+                            
+                        </div>                
+                    </div>
                     <div className="price">${product.price}</div>   
                     <div className="description">
                         <div className="title">Description:</div>
@@ -130,10 +144,9 @@ class RouteProductDetails extends React.Component{
                     </div>
                     
                     {
-                      currentUser && product.user_id !== currentUser.id ? <div className="buy">Buy Now</div> : null
+                      currentUser && product.user_id !== currentUser.id ? <div className="buy" onClick={this.handleAddCartClick}>Buy Now</div> : null
                     }
                     
-
                     <div className="comments">
                         {
                             product.comments.map(comment => {

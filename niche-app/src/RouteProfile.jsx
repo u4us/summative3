@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from '@reach/router';
 import {getSingleUser, serverURL} from './API';
 import './App.scss';
+import UpdateProfile from './UpdateProfile';
 
 class RouteProfile extends React.Component{
     constructor(props){
@@ -12,8 +13,8 @@ class RouteProfile extends React.Component{
                     location: 'location',
                     bio: 'your bio goes here'
                 },
-            user:null
-
+            user:null,
+            updateOpen: false
         }
 
         this.props.setLanding(false)
@@ -30,10 +31,15 @@ class RouteProfile extends React.Component{
         })
     }
 
+    handleupdateOpenClick = () => {
+        this.setState({updateOpen: true})
+    }
+
     render(){
         var {user,profile} = this.state
         return user ? (
             <div className="main profile">
+                <UpdateProfile show={this.state.updateOpen} user={user}/>
                 <Link className="back" to="/products"><i className="fas fa-chevron-left"></i></Link>
 
                 <div className="avatar">
@@ -42,7 +48,7 @@ class RouteProfile extends React.Component{
                 <h2 className="username">{user.username}</h2>
                 <div className="location">{profile.location}</div>
                 <div className="bio">{profile.bio}</div>
-                <div className="settings">Settings</div>
+                <div className="settings" onClick={this.handleupdateOpenClick}>Settings</div>
 
                 <p className="products-title">Products For Sale</p>
                 <div className="user-items">

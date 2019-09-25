@@ -39,16 +39,16 @@ class RouteCategory extends Component {
                     category.products.map((product) => {
         
                         return (
-                            <Link to={'/products/'+product.id}>
+                            <Link className="cat-link" to={'/products/'+product.id}>
                                 <div className="cat-item">
                                     <img className="cat-image" src={serverURL+product.photo} alt="product-image"/>
                                 </div>
                                 <div className="text">
-                                    <div className="likes">
+                                    <div className="favs">
                                         <i class="fas fa-heart"></i>
                                         <p>favourites</p>    
                                     </div>
-                                    
+                                <div className="name">{product.name}</div>   
                                 </div>  
                             </Link>
                         )

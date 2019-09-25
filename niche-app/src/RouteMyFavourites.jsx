@@ -7,31 +7,18 @@ class RouteMyFavourites extends React.Component{
 
     constructor(props){
         super(props);
-        // this.state = {
-        //     products: []
-        // }
 
         this.props.setLanding(false)
     }
 
-    // componentDidMount(){
-    //     this.routeGetProducts();
-    // }
-
-    // routeGetProducts = () => {
-    //     getProducts().then(res => {
-    //         this.setState({products:res.data})
-    //     })
-    // }
-
     render(){
         var {currentUser} = this.props
         return(
-            <div className="main dashboard">
-                <p className="dash-title">YOUR FAVOURITES</p>
-                <div className="dash-items">
+            <div className="main favourites">
+                <p className="title">YOUR FAVOURITES</p>
+                <div className="fav-items">
                     
-                    {
+                    {   currentUser && currentUser.favourites !== undefined ?
                         currentUser.favourites.map((product) => {
                             
                             var productProps = {
@@ -40,15 +27,18 @@ class RouteMyFavourites extends React.Component{
                             };
 
                             return(
-                                <Link to={'/products/'+product.id}>
-                                    <div className="dash-item">
-                                        <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
+                                <Link className="fav-link" to={'/products/'+product.id}>
+                                    <div className="fav-item">
+                                        <div className="fav-image">
+                                            <img className="image" src={serverURL+product.photo} alt="product-image"/>    
+                                        </div>
+                                        <div className="name">{product.name}</div>
                                     </div>  
                                 </Link>
                             )
                         })
+                        : null
                     }
-                    <div className="empty"></div>
   
                 </div>        
             </div>

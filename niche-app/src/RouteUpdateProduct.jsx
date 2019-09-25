@@ -41,6 +41,7 @@ class RouteUpdateProduct extends React.Component {
         var {name,description,price} = this.state.product
         return(
             <div className="main update">
+                <div className="title">Update Your Item</div>
                 <form className="form" onSubmit={this.handleFormSubmit} ref={(el) => {this.form = el}}>
                     <div className="form-group">
                         <label htmlFor="name-input">What are you selling?</label>
@@ -48,7 +49,7 @@ class RouteUpdateProduct extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="description-input">Description</label>
-                        <input type="text" name="description-input" id="description-input"/>
+                        <input type="text" name="description-input" id="description-input" defaultValue={description}/>
                     </div>
                     <div className="form-group price">
                         <label htmlFor="price">Price:</label>
