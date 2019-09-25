@@ -31,7 +31,7 @@ class RouteMyFavourites extends React.Component{
                 <p className="dash-title">YOUR FAVOURITES</p>
                 <div className="dash-items">
                     
-                    {
+                    {   currentUser.favourites !== undefined ?
                         currentUser.favourites.map((product) => {
                             
                             var productProps = {
@@ -47,6 +47,7 @@ class RouteMyFavourites extends React.Component{
                                 </Link>
                             )
                         })
+                        : null
                     }
                     <div className="empty"></div>
   

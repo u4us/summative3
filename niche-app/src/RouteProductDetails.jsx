@@ -121,8 +121,8 @@ class RouteProductDetails extends React.Component{
                              :  <i className="far fa-heart like" onClick={this.handleFavouriteClick}></i>
                             
                         }
-                        {/* {
-                            product.user_id == currentUser.id
+                        {
+                            currentUser && product.user_id == currentUser.id
                             ?(
                                 <>
                                 <div className="edit">
@@ -131,7 +131,7 @@ class RouteProductDetails extends React.Component{
                                 </div>
                                 </>
                             ):null
-                        } */}
+                        }
                         
                     </div>
                     <div className="name">{product.name}</div>   
