@@ -22,6 +22,7 @@ class RouteSignup extends Component {
       username: formData.get('username-input'),
       password: formData.get('password-input'),
       email: formData.get('email-input'),
+      bio: formData.get('bio-input')
     }
     var {setCurrentUser} = this.props
 
@@ -55,6 +56,11 @@ class RouteSignup extends Component {
           <div className="form-group">
             <label htmlFor="name-input">Email</label>
             <input type="email" className="form-control" name="email-input" id="email-input"/>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="name-input">Bio</label>
+            <input type="bio" className="form-control" name="bio-input" id="bio-input"/>
           </div>
 
           <div className="button-group">

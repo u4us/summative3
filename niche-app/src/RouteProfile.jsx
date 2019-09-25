@@ -36,7 +36,7 @@ class RouteProfile extends Component {
                             <div className="username">{user.username}</div>
                             <div className="name">Name:<span>{user.username}</span></div>    
                             <div className="email">Email:<span>{user.email}</span></div>
-                            <div className="description">Bio:<span>Tell us something about yourself...</span></div>
+                            <div className="description">Bio:<span>{user.bio}</span></div>
                         </div>        
                         <div className="edit-details">
                             <Link to={'/users/'+id+'/edit'}>Edit my profile</Link>

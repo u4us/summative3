@@ -25,10 +25,8 @@ class RouteUpdateProfile extends React.Component {
 
         var data = {
             username: formData.get('username'),
-            // description: formData.get('description-input'),
-            // price: formData.get('price-input'),
-            // category_id:formData.get('category-input'),
-        }
+            email: formData.get('email'),
+            bio: formData.get('bio'),        }
 
         // var {id} = this.props;
         updateUser(id,data).then(res => navigate('/users/'+id))
@@ -50,7 +48,7 @@ class RouteUpdateProfile extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="bio">Bio</label>   
-                        <input type="text" name="bio" id="bio" placeholder="Tell us something about yourself..."/>               
+                        <input type="text" name="bio" id="bio" defaultValue={currentUser.bio}/>               
                     </div>
                     
         
