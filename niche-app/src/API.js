@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// var urlPrefix = 'http://10.2.24.56:3001/api';
-var urlPrefix = 'http://localhost:3001/api';
-// var serverURL = 'http://10.2.24.56:3001/';
-var serverURL = 'http://localhost:3001/';
+var urlPrefix = 'http://10.2.24.56:3001/api';
+// var urlPrefix = 'http://localhost:3001/api';
+var serverURL = 'http://10.2.24.56:3001/';
+// var serverURL = 'http://localhost:3001/';
 
 // product
 var getProducts = () => {
@@ -65,6 +65,10 @@ var getSingleUser = (id) => {
     return axios.get(urlPrefix+'/users/'+id)
 }
 
+var updateUser = (id, data) => {
+    return axios.put(urlPrefix+'/users/'+id, data)
+}
+
 //authenticate
 var  authenticate = (data) => {
     return axios.post(urlPrefix+'/authenticate',data)          
@@ -93,6 +97,7 @@ export {
 
     addUser,
     getSingleUser,
+    updateUser,
     
     authenticate,
     uploadFile,

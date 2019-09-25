@@ -328,6 +328,12 @@ footer{
         .category-input:focus{
             outline: none;
         }
+
+        #bio::placeholder{
+            color: #F16266;
+            opacity: .5;
+        }
+        
     }
 
     .price{
@@ -573,14 +579,8 @@ footer{
             .username{
                 font-size: 1.2rem;
                 font-weight: 700;
+                margin-bottom: 1em;
             }
-    
-            .location{
-                font-size: .9rem;
-                font-weight: 500;
-                color: grey;
-                margin-bottom:1em;
-            } 
 
             .name, .email, .description{
                 font-size: .8em;
@@ -601,8 +601,8 @@ footer{
             p{
                 border: 1px solid #F16266;
                 text-align: center;
-                padding: .2em;
-                border-radius:.3em;
+                padding: .5em;
+                border-radius:25px;
                 font-size: .8em;
 
                 &:hover{
