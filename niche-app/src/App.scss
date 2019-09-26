@@ -493,6 +493,8 @@ footer{
 
         input:focus{
             outline: none;
+            background-color: transparent;
+            color: white;
         }
 
         input::placeholder{
