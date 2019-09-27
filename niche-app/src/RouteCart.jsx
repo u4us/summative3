@@ -11,13 +11,16 @@ class RouteCart extends React.Component{
         this.props.setLanding(false)
     }
 
-    handleRemoveCartClick = () => {
+    handleRemoveCartClick = (e) => {
        
-        var {id,currentUser,setCurrentUser} = this.props;
-        removeFromCart(currentUser.id,id).then(res => {
+        var {currentUser,setCurrentUser} = this.props;
+
+        var productId = e.target.dataset.productid
+        console.log(productId)
+        removeFromCart(currentUser.id,productId).then(res => {
             var user = res.data
             setCurrentUser(user)
-            window.location.reload();          
+          
         })
     }
 
@@ -43,7 +46,7 @@ class RouteCart extends React.Component{
                                         </Link>
                                         <div className="details">
                                             <div className="name">{product.name}</div>              
-                                            <div className="delete" onClick={this.handleRemoveCartClick}>Remove</div>     
+                                            <div className="delete" data-productid={product.id} onClick={this.handleRemoveCartClick}>Remove</div>     
                                         </div>
                                         </div>                                                                              
                                         <div className="price">${product.price}</div> 
@@ -55,6 +58,8 @@ class RouteCart extends React.Component{
                     }
   
                 </div>
+
+                <div className="proceed">Proceed</div>
             </div>
         );
     }

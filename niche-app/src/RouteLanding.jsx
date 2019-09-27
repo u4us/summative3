@@ -22,7 +22,7 @@ class RouteLanding extends Component {
             //requires condition to check if user has logged in before setting default redirect as profile
             <div class="login-container">
                 <div class="logo">
-                    <img class="logo" src="newlogo.png" alt=""/>    
+                    <img class="logo" src="red-logo.png" alt=""/>    
                 </div>   
                 <div class="button-group">
                     <Link className="landing-button login-button" to="/login">Login</Link>

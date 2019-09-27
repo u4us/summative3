@@ -33,6 +33,7 @@ class RouteMyFavourites extends React.Component{
                                             <img className="image" src={serverURL+product.photo} alt="product-image"/>    
                                         </div>
                                         <div className="name">{product.name}</div>
+                                        <div className="price">${product.price}</div>
                                     </div>  
                                 </Link>
                             )

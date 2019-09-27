@@ -9,8 +9,6 @@ class Nav extends React.Component{
         super(props)
 
         this.state = {
-            categories:[
-            ]
         }
     }
 

@@ -38,7 +38,7 @@ class RouteProductDetails extends React.Component{
         addFavourite(currentUser.id,{productid:id}).then(res => {
             var user = res.data
             setCurrentUser(user)
-            // navigate('/favourites')
+            navigate('/favourites')
         })
     }
 
@@ -48,7 +48,7 @@ class RouteProductDetails extends React.Component{
         removeFavourite(currentUser.id,id).then(res => {
             var user = res.data
             setCurrentUser(user)
-            // navigate('/favourites')
+            navigate('/favourites')
         })
     }
     

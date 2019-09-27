@@ -71,14 +71,23 @@ class RouteDashboard extends React.Component{
                     <Link className="cat-link" to={'/product/'+'4'}>
                         <div className="dash-category">
                             <div className="image">
-                                <img className="category-image" src="jacket.jpg" alt="tops"/>    
+                                <img className="category-image" src="jackets.png" alt="tops"/>    
                             </div>
                             <div className="category-name">
                                 <p className="name">JACKETS</p>
                                 <p className="plus">+</p>    
                             </div> 
                         </div>
-                    </Link>     
+                    </Link>
+                    {/* <div className="accessories">
+                        <div className="image">
+                            <img className="img" src="accessories.jpg" alt=""/>
+                        </div>
+                        <div className="category-name">
+                            <p className="name">ACCESSORIES</p>
+                            <p className="plus">+</p>    
+                        </div>
+                    </div>      */}
                 </div>
                        
             </div>

@@ -12,10 +12,6 @@ class RouteCategory extends Component {
         this.props.setLanding(false)
     }
 
-    routeGetCategory =(id) =>{
-        getCategory(id).then(res => this.setState({category: res.data}))
-    }
-
     componentDidMount(){
         var {id} = this.props
         this.routeGetCategory(id)
@@ -26,6 +22,10 @@ class RouteCategory extends Component {
         if(id != prevProps.id){
           this.routeGetCategory(id)
         }
+    }
+
+    routeGetCategory =(id) =>{
+        getCategory(id).then(res => this.setState({category: res.data}))
     }
 
     render() {
@@ -46,9 +46,10 @@ class RouteCategory extends Component {
                                 <div className="text">
                                     <div className="favs">
                                         <i class="fas fa-heart"></i>
-                                        <p>favourites</p>    
+                                        <p>35 favourites</p>    
                                     </div>
-                                <div className="name">{product.name}</div>   
+                                <div className="name">{product.name}</div>
+                                <div className="price">${product.price}</div>   
                                 </div>  
                             </Link>
                         )

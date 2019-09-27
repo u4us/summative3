@@ -15,16 +15,23 @@ class UpdateProfile extends React.Component{
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        var {id} = this.props
+        var {user,setModalStatus,refreshData} = this.props
         var formData = new FormData(this.form);
 
         var data = {
             username: formData.get('username'),
             email: formData.get('email'),
             bio: formData.get('bio'),
+            location: formData.get('location'),
         }
 
-        updateUser(id,data)
+        updateUser(user.id,data).then(res=>{
+            refreshData()
+            setModalStatus(false)
+
+        })
+
+     
     }
 
     
@@ -40,18 +47,18 @@ class UpdateProfile extends React.Component{
                 <div className="update-profile">
                     <div className="title">Edit Profile</div>
 
-                    <form className="profile-form" onSubmit={this.handleFormSubmit}>
+                    <form className="profile-form" onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>
                         <div className="form-group">
-                            <label htmlFor="">Username:</label>
-                            <input type="text" defaultValue={user.username}/>
+                            <label htmlFor="username">Username:</label>
+                            <input type="text" name="username" defaultValue={user.username}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="">Location:</label>
-                            <input type="text" defaultValue={user.location}/>
+                            <label htmlFor="location">Location:</label>
+                            <input type="text" name="location" defaultValue={user.location}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="">Bio:</label>
-                            <input type="text" defaultValue={user.bio} />
+                            <label htmlFor="bio">Bio:</label>
+                            <input type="text" name="bio" defaultValue={user.bio} />
                         </div>
 
                         <div className="button">

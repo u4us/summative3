@@ -8,11 +8,6 @@ class RouteProfile extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            profile: 
-                {
-                    location: 'location',
-                    bio: 'your bio goes here'
-                },
             user:null,
             updateOpen: false
         }
@@ -31,24 +26,29 @@ class RouteProfile extends React.Component{
         })
     }
 
-    handleupdateOpenClick = () => {
-        this.setState({updateOpen: true})
+    handleUpdateOpenClick = () => {
+        this.setModalStatus(true)
     }
 
+    setModalStatus = (status) => {
+        this.setState({updateOpen: status})
+    }
+
+
     render(){
-        var {user,profile} = this.state
+        var {user,profile,id} = this.state
         return user ? (
             <div className="main profile">
-                <UpdateProfile show={this.state.updateOpen} user={user}/>
+                <UpdateProfile show={this.state.updateOpen} user={user} setModalStatus={this.setModalStatus} refreshData={this.routeGetUser}/>
                 <Link className="back" to="/products"><i className="fas fa-chevron-left"></i></Link>
 
                 <div className="avatar">
                     <img className="avatar-image" src="/mountain.jpg" alt="avatar"/>
                 </div>
                 <h2 className="username">{user.username}</h2>
-                <div className="location">{profile.location}</div>
-                <div className="bio">{profile.bio}</div>
-                <div className="settings" onClick={this.handleupdateOpenClick}>Settings</div>
+                <div className="location">{user.location ? user.location : 'location'}</div>
+                <div className="bio">{user.bio ? user.bio : 'your bio goes here'}</div>
+                <div className="settings" onClick={this.handleUpdateOpenClick}>Settings</div>
 
                 <p className="products-title">Products For Sale</p>
                 <div className="user-items">
