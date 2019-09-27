@@ -74,7 +74,7 @@ class App extends React.Component{
               <RouteUpdateProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id/edit"/>
               <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id"/>
               
-              <RouteCategory path="/nav/:id"/>
+              <RouteCategory setLanding={this.setLanding} path="/nav/:id"/>
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
               <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} default />

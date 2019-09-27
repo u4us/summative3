@@ -374,6 +374,48 @@ footer{
     }
 }
 
+/* single category */
+
+.category{
+    .title{
+        text-align: center;
+        margin: 1rem;
+        text-transform: uppercase;
+    }
+
+    .cat-items{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: space-between;
+    
+        .cat-item{
+            max-width: 33vw;
+            max-height: 33vw;
+            overflow: hidden;
+            margin-bottom: 0.1rem;
+    
+            img{
+                height: 33vw;
+            }
+    
+            .cat-image{
+                object-fit: cover;
+            }
+    
+            img[class]{
+                width: 100%;
+            }
+        }
+    
+        .empty{
+            display: block;
+            height: 33vw;
+            width: 33vw;
+        }
+    }
+}
+
 /* nav page */
 
 .nav-container{

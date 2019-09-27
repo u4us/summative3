@@ -8,6 +8,8 @@ class RouteCategory extends Component {
         this.state = {
             category: null,
         }
+
+        this.props.setLanding(false);
     }
 
     routeGetCategory =(id) =>{
@@ -29,22 +31,16 @@ class RouteCategory extends Component {
     render() {
         var {category} = this.state
         return category ? (
-            <div class="main dashboard">
-                <div className="dash-items">
-                <h3>{category.name}</h3>
+            <div class="main category">
+                <h3 className="title">{category.name}</h3>
+                <div className="cat-items">
                 {
                     category.products.map((product) => {
         
-                        // var productProps = {
-                        //     ...product,
-                        //     key: product.id,
-                        //     refreshData: () => this.routeGetCategory(category.id),
-                        //     currentUser: this.props.currentUser
-                        // };
                         return (
                             <Link to={'/products/'+product.id}>
-                                <div className="dash-item">
-                                    <img className="dash-image" src={serverURL+product.photo} alt="product-image"/>
+                                <div className="cat-item">
+                                    <img className="cat-image" src={serverURL+product.photo} alt="product-image"/>
                                 </div>  
                             </Link>
                         )
