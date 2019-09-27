@@ -978,6 +978,18 @@ footer{
         }
     }
 
+    .avatar-upload{
+        border: 2px $primary-color solid;
+        font-size: 0.8rem;
+        color: $primary-color;
+        font-weight: 700;
+        padding: 0.3rem 0.5rem;
+
+        input{
+            display: none;
+        }
+    }
+
     .username{
         text-align: center;
         margin-top: 0.8rem;

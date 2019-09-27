@@ -50,6 +50,10 @@ class RouteProfile extends React.Component{
                 <div className="bio">{user.bio ? user.bio : 'your bio goes here'}</div>
                 <div className="settings" onClick={this.handleUpdateOpenClick}>Settings</div>
 
+                <label htmlFor="avatar" className="avatar-upload">
+                    <input type="file" name="avatar" />change photo
+                </label>
+
                 <p className="products-title">Products For Sale</p>
                 <div className="user-items">
                         
