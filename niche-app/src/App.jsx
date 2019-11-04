@@ -85,7 +85,7 @@ class App extends React.Component{
           (isLanding == false) ? ( 
             <footer>
               <Link to="/products"><i className="fas fa-home"></i></Link>
-              <i className="fas fa-search"></i>
+              <i className="fas fa-compass"></i>
               <Link to="/products/create"><i className="far fa-plus-square plus"></i></Link>
               <Link to="/favourites" ><i className="far fa-heart"></i></Link>
               {currentUser? <Link to={'/users/'+currentUser.id}><i className="fas fa-user-circle"></i></Link> : null}
