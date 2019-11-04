@@ -69,6 +69,18 @@ var updateUser = (id, data) => {
     return axios.put(urlPrefix+'/users/'+id, data)
 }
 
+// locations
+
+var getLocation = (id) => {
+    return axios.get(urlPrefix+'/location'+id)
+}
+
+var addLocation = (data) => {
+    return axios.post(urlPrefix+'/location', data)
+}
+
+
+
 //authenticate
 var  authenticate = (data) => {
     return axios.post(urlPrefix+'/authenticate',data)          
@@ -104,5 +116,7 @@ export {
 
     serverURL,
     addFavourite,
-    removeFavourite
+    removeFavourite,
+    getLocation,
+    addLocation,
 }

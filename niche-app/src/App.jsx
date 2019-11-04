@@ -70,7 +70,7 @@ class App extends React.Component{
               <RouteLanding setCurrentUser={this.setCurrentUser} path="/"/>
               <RouteLogin setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/login"/>
               <RouteSignup setCurrentUser={this.setCurrentUser} setLanding={this.setLanding} path="/users/create"/>
-
+              
               <RouteUpdateProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id/edit"/>
               <RouteProfile currentUser={this.state.currentUser} setLanding={this.setLanding} path="/users/:id"/>
               
