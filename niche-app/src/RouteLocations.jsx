@@ -13,6 +13,10 @@ class RouteLocations extends React.Component{
 
         this.props.setLanding(false)
     }
+
+    render(){
+    	return (<div>List of locations</div>)
+    }
 }
 
 export default RouteLocations;

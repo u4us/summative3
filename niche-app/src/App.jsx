@@ -4,6 +4,8 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import RouteDashboard from './RouteDashboard.jsx';
 import RouteProductDetails from './RouteProductDetails.jsx';
 import RouteAddProduct from './RouteAddProduct.jsx';
+import RouteAddLocation from './RouteAddLocation.jsx';
+import RouteLocations from './RouteLocations.jsx';
 import RouteUpdateProduct from './RouteUpdateProduct.jsx';
 import RouteNav from './RouteNav.jsx';
 import RouteLanding from './RouteLanding.jsx';
@@ -77,6 +79,13 @@ class App extends React.Component{
               <RouteCategory setLanding={this.setLanding} path="/nav/:id"/>
               
               {currentUser ? <RouteMyFavourites currentUser={this.state.currentUser} setLanding={this.setLanding} path="/favourites"/> : null}
+
+
+              <RouteAddLocation currentUser={this.state.currentUser} setLanding={this.setLanding} path="/locations/create"/>
+              <RouteLocations currentUser={this.state.currentUser} setLanding={this.setLanding} path="/locations" />
+
+
+
               <RouteNav currentUser={this.state.currentUser} setLanding={this.setLanding} default />
             </Router>
         </div>

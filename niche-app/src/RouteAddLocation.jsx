@@ -21,17 +21,16 @@ class RouteAddLocation extends React.Component{
         
             var formData = new FormData(this.form);
     
-            uploadFile(formData).then(res => {
-                var fileName = res.data;
+        
 
-                var data = {
-                    name:formData.get('name-input'),
-                    description:formData.get('description-input'),
-                    user_id: this.props.currentUser.id,
-                  }
+            var data = {
+                name:formData.get('name-input'),
+                description:formData.get('description-input'),
+                //user_id: this.props.currentUser.id,
+            }
 
-                  addLocation(data).then(res => navigate('/location'))
-            })
+            addLocation(data).then(res => navigate('/location'))
+            
         }
 
     render(){
