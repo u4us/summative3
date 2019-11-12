@@ -71,12 +71,12 @@ var updateUser = (id, data) => {
 
 // locations
 
-var getLocation = (id) => {
-    return axios.get(urlPrefix+'/location'+id)
+var getLocations = () => {
+    return axios.get(urlPrefix+'/locations')
 }
 
 var addLocation = (data) => {
-    return axios.post(urlPrefix+'/location', data)
+    return axios.post(urlPrefix+'/locations', data)
 }
 
 
@@ -117,6 +117,6 @@ export {
     serverURL,
     addFavourite,
     removeFavourite,
-    getLocation,
+    getLocations,
     addLocation,
 }

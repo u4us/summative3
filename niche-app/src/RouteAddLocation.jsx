@@ -25,8 +25,7 @@ class RouteAddLocation extends React.Component{
 
             var data = {
                 name:formData.get('name-input'),
-                description:formData.get('description-input'),
-                //user_id: this.props.currentUser.id,
+                address:formData.get('address-input'),
             }
 
             addLocation(data).then(res => navigate('/location'))
@@ -40,11 +39,11 @@ class RouteAddLocation extends React.Component{
                 <div className="main add-product">
                     <form className ="form" onSubmit={this.handleFormSubmit} ref={(el)=>{this.form=el}}>
                         <div className="form-group">
-                            <label htmlFor="name-input">Name of Location?/</label>
+                            <label htmlFor="name-input">Name of Location? </label>
                             <input type="text" name="name-input" id="name-input"/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="name-input">Name of Address?/</label>
+                            <label htmlFor="name-input">Name of Address? </label>
                             <input type="text" name="address-input" id="address-input"/>
                         </div>
             
