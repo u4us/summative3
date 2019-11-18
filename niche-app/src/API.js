@@ -79,6 +79,10 @@ var addLocation = (data) => {
     return axios.post(urlPrefix+'/locations', data)
 }
 
+var deleteLocation  = (id) => {
+    return axios.delete(urlPrefix+'/locations/'+id)
+}
+
 
 
 //authenticate
@@ -119,4 +123,5 @@ export {
     removeFavourite,
     getLocations,
     addLocation,
+    deleteLocation
 }

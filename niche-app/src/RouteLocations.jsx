@@ -1,6 +1,6 @@
 import React from 'react';
-import {getProducts,serverURL, getLocations} from './API';
-import {Link} from '@reach/router';
+import {getProducts,serverURL, getLocations,deleteLocation} from './API';
+import {Link,navigate} from '@reach/router';
 import './App.scss';
 
 class RouteLocations extends React.Component{
@@ -12,6 +12,13 @@ class RouteLocations extends React.Component{
         }
 
         this.props.setLanding(false)
+    }
+
+    handleTrashClick = (e) => {
+        var id = e.target.dataset.locationid;
+
+        console.log(id)
+        deleteLocation(id).then(res => window.location.reload())
     }
 
     componentDidMount(){
@@ -36,7 +43,7 @@ class RouteLocations extends React.Component{
                         this.state.locations.map((location) => {
                         
 
-                            return (<div className="location">{location.name}, {location.address}</div>)
+                            return (<div className="location">{location.name}, {location.address} <i className="fas fa-trash-alt" data-locationid={location.id} onClick={this.handleTrashClick}></i> </div>)
 
                         })
                     }
